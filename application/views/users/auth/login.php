@@ -37,37 +37,37 @@ $get_data = $this->db->get('kontak')->row();
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/login/css/main.css">
     <!--===============================================================================================-->
 
-	<style>
-		.center {
-			text-align: center;
-		}
+    <style>
+    .center {
+        text-align: center;
+    }
 
-		a:link {
-  			color: #0000FF;
-		}	
+    a:link {
+        color: #0000FF;
+    }
 
-		/* visited link */
-		a:visited {
-  			color: #0000FF;
-		}
+    /* visited link */
+    a:visited {
+        color: #0000FF;
+    }
 
-		/* mouse over link */
-		a:hover {
-  			color: grey;
-		}
+    /* mouse over link */
+    a:hover {
+        color: grey;
+    }
 
-		/* selected link */
-		a:active {
-  			color: yellow;
-		} 
-	</style>
+    /* selected link */
+    a:active {
+        color: yellow;
+    }
+    </style>
 </head>
 
 <body>
 
     <div class="limiter">
         <!-- <div class="container-login100" style="background-image: url('assets/login/images/bg-01.jpg');"> -->
-        <div class="container-login100" style="background-image: url('../assets/login/images/rapat-fix.jpg');">
+        <div class="container-login100" style="background-image: url('../assets/login/images/bgmasjar.jpg');">
             <div class="wrap-login100 p-t-30 p-b-50">
                 <span class="login100-form-title p-b-41">
                     <?php
@@ -93,10 +93,10 @@ $get_data = $this->db->get('kontak')->row();
                             Login
                         </button>
                     </div>
-					<br>
+                    <br>
                     <div class="center">Belum punya akun?
-						<a href="https://www.youtube.com/">register</a>
-					</div>
+                        <a href="https://www.youtube.com/">register</a>
+                    </div>
                 </form>
             </div>
 
