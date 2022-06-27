@@ -36,6 +36,31 @@ $get_data = $this->db->get('kontak')->row();
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/login/css/util.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/login/css/main.css">
     <!--===============================================================================================-->
+
+	<style>
+		.center {
+			text-align: center;
+		}
+
+		a:link {
+  			color: #0000FF;
+		}	
+
+		/* visited link */
+		a:visited {
+  			color: #0000FF;
+		}
+
+		/* mouse over link */
+		a:hover {
+  			color: red;
+		}
+
+		/* selected link */
+		a:active {
+  			color: yellow;
+		} 
+	</style>
 </head>
 
 <body>
@@ -48,7 +73,7 @@ $get_data = $this->db->get('kontak')->row();
                     <?php
 $get_data = $this->db->get('kontak')->row();
 ?>
-                    Login | E-Ruang Rapat
+                    Login | SIMPELMASJAR
                 </span>
                 <form class="login100-form validate-form p-b-33 p-t-5"
                     action="<?php echo site_url('auth/validatelogin'); ?>" method="post">
@@ -68,7 +93,10 @@ $get_data = $this->db->get('kontak')->row();
                             Login
                         </button>
                     </div>
-                    <a href="https://www.youtube.com/">Register</a>
+					<br>
+                    <div class="center">Belum punya akun?
+						<a href="https://www.youtube.com/">register</a>
+					</div>
                 </form>
             </div>
 
