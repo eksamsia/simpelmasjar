@@ -68,7 +68,7 @@ $get_data = $this->db->get('kontak')->row();
                             Login
                         </button>
                     </div>
-                    <a href="">Register</a>
+                    <a href="youtube.com">Register</a>
                 </form>
             </div>
 
