@@ -53,7 +53,7 @@ $get_data = $this->db->get('kontak')->row();
 
 		/* mouse over link */
 		a:hover {
-  			color: red;
+  			color: grey;
 		}
 
 		/* selected link */
