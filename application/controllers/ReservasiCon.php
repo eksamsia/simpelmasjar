@@ -38,7 +38,7 @@ class ReservasiCon extends DefaultController
         $this->load->database();
         $this->db->select('*');
         $this->db->where('id', $id_rr);
-        return $this->db->get('master_keperluan')->result();
+        return $this->db->get('master_ruang')->result();
     }
 
     private function get_all_rr()
@@ -46,7 +46,7 @@ class ReservasiCon extends DefaultController
         $this->load->database();
         $this->db->select('*');
         $this->db->order_by("id", "asc");
-        return $this->db->get('master_keperluan')->result();
+        return $this->db->get('master_ruang')->result();
     }
 
     public function insertData()
