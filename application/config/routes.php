@@ -88,3 +88,5 @@ $route['admin/list-rapat/remove/(:any)']['post'] = 'ListRapatCon/delete/$1';
 ///////////////////////// LIST RAPAT BELOM ACC //////////////////////////////////
 $route['admin/list-rapat-belom-acc'] = 'ListRapatCon/list_rapat_belom_acc';
 
+///////////////////////// LIST PENGAJUAN PROPOSAL //////////////////////////////////
+$route['admin/pengajuan'] = 'PengajuanCon/index';

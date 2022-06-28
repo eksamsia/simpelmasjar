@@ -38,6 +38,11 @@
   					</a>
   				</li>
                 <li class="nav-item">
+                    <a class="nav-link menu-link" href="<?= base_url();?>admin/pengajuan">
+                        <i class="lab la-accusoft"></i> <span data-key="t-landing">Pengajuan Proposal</span>
+                    </a>
+                </li>
+				<li class="nav-item">
                     <a class="nav-link menu-link" href="<?= base_url();?>admin/list-rapat">
                         <i class="lab la-accusoft"></i> <span data-key="t-landing">List Rapat</span>
                     </a>
