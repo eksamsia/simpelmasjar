@@ -11,12 +11,12 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">Master Ruang Rapat</h4>
+                        <h4 class="mb-sm-0">Pengajuan Izin</h4>
 
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="<?=base_url();?>">Home</a></li>
-                                <li class="breadcrumb-item active">Master RR</li>
+                                <li class="breadcrumb-item active">Pengajuan Izin</li>
                             </ol>
                         </div>
 
@@ -30,7 +30,7 @@
                     <div class="card">
                         <div class="card-header align-items-center d-flex">
                             <!-- <?php print("<pre>" . print_r($data_rr, true) . "</pre>");?> -->
-                            <h4 class="card-title mb-0 flex-grow-1">Data Master Ruang Rapat</h4>
+                            <h4 class="card-title mb-0 flex-grow-1">Data Pengajuan Izin</h4>
                             <div class="flex-shrink-0">
                                 <button class="btn btn-success btn-animation waves-effect waves-light"
                                     data-bs-toggle="modal" data-bs-target="#addmembers"><i
@@ -47,6 +47,8 @@
                                                 <th scope="col">No</th>
                                                 <th scope="col">Nama</th>
                                                 <th scope="col">Keperluan</th>
+                                                <th scope="col">Tanggal Mulai</th>
+                                                <th scope="col">Tanggal Selesai</th>
                                                 <th scope="col">Judul Penelitian</th>
                                                 <th scope="col">Keterangan</th>
                                                 <th scope="col">Dokumen</th>
@@ -55,15 +57,22 @@
                                         </thead>
                                         <tbody>
                                             <?php
-                                                $count = 0;
-                                                foreach ($data_izin as $val) {
-                                                $count = $count + 1;
-                                            ?>
+$count = 0;
+foreach ($data_izin as $val) {
+    $count = $count + 1;
+    ?>
                                             <tr>
                                                 <td style="width: 5%; vertical-align"><?php echo $count; ?></td>
-                                                <td style="width: 5%; vertical-align"><?php echo help_nama_user($val->id_user); ?></td>
-                                                <td style="width: 20%; vertical-align"><?php echo help_nama_kategori($val->id_kategori); ?></td>
-                                                <td style="width: 20%; vertical-align"><?php echo $val->judul_penelitian; ?>
+                                                <td style="width: 5%; vertical-align">
+                                                    <?php echo help_nama_user($val->id_user); ?></td>
+                                                <td style="width: 20%; vertical-align">
+                                                    <?php echo help_nama_kategori($val->id_kategori); ?></td>
+                                                <td style="width: 20%; vertical-align">
+                                                    <?php echo $val->mulai_penelitian; ?></td>
+                                                <td style="width: 20%; vertical-align">
+                                                    <?php echo $val->selesai_penelitian; ?></td>
+                                                <td style="width: 20%; vertical-align">
+                                                    <?php echo $val->judul_penelitian; ?>
                                                 <td style="width: 20%; vertical-align"><?php echo $val->keterangan; ?>
                                                 </td>
                                                 <td style="width: 20%; vertical-align">
@@ -122,8 +131,8 @@
                                     <select class="form-control" name="id_rr" id="id_rr" required>
                                         <option value="" selected disabled>Kategori</option>
                                         <?php
-                                            foreach ($data_kategori as $val) {?>
-                                        <option value="<?=$val->id;?>";?>
+foreach ($data_kategori as $val) {?>
+                                        <option value="<?=$val->id;?>" ;?>
                                             <?=$val->kategori;?></option>;
                                         <?php }?>
                                     </select>
