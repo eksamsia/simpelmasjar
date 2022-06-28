@@ -88,50 +88,8 @@ foreach ($data_rr as $val) {
     <!-- End Page-content -->
     <!-- End Page-content -->
 
-    <!-- Save Modal -->
-    <!-- <div class="modal fade" id="addmembers" tabindex="-1" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered">
-			<div class="modal-content border-0">
-				<div class="modal-header p-3 bg-soft-info">
-					<h5 class="modal-title" id="myModalLabel">Form Ruang Rapat</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<form id="form_input">
-						<div class="row">
-							<div class="col-lg-12">
-								<div class="mb-3">
-									<label for="teammembersName" class="form-label">Nama Ruang Rapat</label>
-									<input type="hidden" class="form-control" id="indikator" name="indikator">
-									<input type="hidden" class="form-control" id="id_edit" name="id_edit">
-									<input type="text" class="form-control" id="nama_rr" name="nama_rr" placeholder="Nama Ruang Rapat">
-								</div>
-							</div>
-							<div class="col-lg-12">
-								<div class="mb-3">
-									<label for="designation" class="form-label">Deskripsi</label>
-									<textarea name="deskripsi_rr" id="deskripsi_rr" rows="10" cols="80"></textarea>
-								</div>
-							</div>
-							<div class="col-lg-12">
-								<div class="mb-4">
-									<label for="formFile" class="form-label">Upload Foto</label>
-									<input class="form-control" type="file" id="file" name="file">
-								</div>
-							</div>
-							<div class="col-lg-12">
-								<div class="hstack gap-2 justify-content-end">
-									<button type="button" class="btn btn-success" onclick="save_rr()"><i class="las la-save"></i> Simpan</button>
-									<button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="las la-times"></i> Batal</button>
-								</div>
-							</div>
-						</div>
-					</form>
-				</div> -->
-    <!-- </div>end modal-content
-		</div>end modal-dialog
-	</div>end modal -->
-    <!-- RESERVASI Modal -->
+
+    <!-- PENGAJUAN IZIN -->
     <div class="modal fade" id="addmembers" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0">
@@ -176,10 +134,10 @@ foreach ($data_rr as $val) {?>
                                         placeholder="Judul Rapat">
                                 </div>
                             </div>
-
+                            <!--
                             <div class="col-12">
-                                <!-- +++++++++ TANGGAL RAPAT +++++++++++ -->
-                                <div class="mb-3">
+                                < +++++++++ TANGGAL RAPAT +++++++++++ -->
+                            <!-- <div class="mb-3">
                                     <label class="form-label">Lama Kegiatan</label>
                                     <div class="input-group">
                                         <input type="text" id="tanggal_rapat" name="tanggal_rapat"
@@ -188,8 +146,8 @@ foreach ($data_rr as $val) {?>
                                         <span class="input-group-text"><i class="ri-calendar-event-line"></i></span>
                                     </div>
                                 </div>
-                            </div>
-                            <!--end col-->
+                            </div> -->
+                            <!-- end col -->
 
                             <div class="col-12" id="event-time">
                                 <!-- ++++++++++ JAM RAPAT +++++++++++++++ -->
@@ -198,10 +156,15 @@ foreach ($data_rr as $val) {?>
                                         <div class="mb-3">
                                             <label class="form-label">Mulai</label>
                                             <div class="input-group">
-                                                <input id="jam_mulai" name="jam_mulai" type="text"
+                                                <!-- <input id="jam_mulai" name="jam_mulai" type="text"
                                                     class="form-control flatpickr flatpickr-input"
                                                     placeholder="Select start time" readonly>
-                                                <span class="input-group-text"><i class="ri-time-line"></i></span>
+                                                <span class="input-group-text"><i class="ri-time-line"></i></span> -->
+                                                <input type="text" id="tanggal_rapat" name="tanggal_rapat"
+                                                    class="form-control flatpickr flatpickr-input"
+                                                    placeholder="Select date" readonly required>
+                                                <span class="input-group-text"><i
+                                                        class="ri-calendar-event-line"></i></span>
                                             </div>
                                         </div>
                                     </div>
@@ -209,10 +172,15 @@ foreach ($data_rr as $val) {?>
                                         <div class="mb-3">
                                             <label class="form-label">Selesai</label>
                                             <div class="input-group">
-                                                <input id="jam_selesai" name="jam_selesai" type="text"
+                                                <!-- <input id="jam_selesai" name="jam_selesai" type="text"
                                                     class="form-control flatpickr flatpickr-input"
                                                     placeholder="Select end time" readonly>
-                                                <span class="input-group-text"><i class="ri-time-line"></i></span>
+                                                <span class="input-group-text"><i class="ri-time-line"></i></span> -->
+                                                <input type="text" id="tanggal_rapat" name="tanggal_rapat"
+                                                    class="form-control flatpickr flatpickr-input"
+                                                    placeholder="Select date" readonly required>
+                                                <span class="input-group-text"><i
+                                                        class="ri-calendar-event-line"></i></span>
                                             </div>
                                         </div>
                                     </div>
@@ -264,7 +232,8 @@ foreach ($data_rr as $val) {?>
         </div>
         <!--end modal-dialog-->
     </div>
-    <!--end modal-->
+    <!--end pengajuan izin-->
+
     <!-- Gambar Modal -->
     <div class="modal fade" id="modal_gambar" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
