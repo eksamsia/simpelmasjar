@@ -70,7 +70,8 @@ class PengajuanCon extends DefaultController {
                 'mulai_penelitian'    => $this->input->post("mulai_penelitian"),
                 'selesai_penelitian'    => $this->input->post("selesai_penelitian"),
                 'keterangan'    => $this->input->post("keterangan"),
-                'filepath'    => $imgpath
+                'id_kategori'    => $this->input->post("kategori"),
+                'upload_file'    => $imgpath
             );
 
             $doupload = $this->db->insert('pengajuan',$data);
@@ -111,12 +112,16 @@ class PengajuanCon extends DefaultController {
                 $imgpath = $a.$b;
                 
                 $data = array(
-                    'nama_rr'    => $this->input->post("nama_rr"),
-                    'deskripsi_rr'    => $this->input->post("deskripsi_rr"),
-                    'filepath'    => $imgpath
+                    'id_user'    => $this->session->userdata("userid"),
+                    'judul_penelitian'    => $this->input->post("judul_penelitian"),
+                    'mulai_penelitian'    => $this->input->post("mulai_penelitian"),
+                    'selesai_penelitian'    => $this->input->post("selesai_penelitian"),
+                    'keterangan'    => $this->input->post("keterangan"),
+                    'id_kategori'    => $this->input->post("kategori"),
+                    'upload_file'    => $imgpath
                 );
 
-                $doupload = $this->db->insert('master_ruang',$data);
+                $doupload = $this->db->insert('pengajuan',$data);
 
                 if($doupload)
                 {

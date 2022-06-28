@@ -90,3 +90,7 @@ $route['admin/list-rapat-belom-acc'] = 'ListRapatCon/list_rapat_belom_acc';
 
 ///////////////////////// LIST PENGAJUAN PROPOSAL //////////////////////////////////
 $route['admin/pengajuan'] = 'PengajuanCon/index';
+$route['admin/pengajuan/insert-data']['post'] = 'PengajuanCon/insertData';
+$route['admin/pengajuan/ambil-data-by-id/(:any)'] = 'PengajuanCon/getById/$1';
+$route['admin/pengajuan/edit-data/(:any)'] = 'PengajuanCon/editData/$1';
+$route['admin/pengajuan/remove/(:any)']['post'] = 'PengajuanCon/delete/$1';
