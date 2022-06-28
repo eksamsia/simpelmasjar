@@ -115,20 +115,11 @@ foreach ($data_izin as $val) {
                     <form id="form_input">
                         <div class="row">
 
-
-                            <div class="col-lg-12">
-                                <div class="mb-3">
-                                    <label for="teammembersName" class="form-label">Nama Pengusul</label>
-                                    <input type="text" class="form-control" id="judul_rapat" name="judul_rapat"
-                                        placeholder="Judul Rapat">
-                                </div>
-                            </div>
-
                             <div class="col-lg-12">
                                 <div class="mb-3">
                                     <label for="teammembersName" class="form-label">Keperluan</label>
                                     <input type="hidden" class="form-control" id="id_edit" name="id_edit">
-                                    <select class="form-control" name="id_rr" id="id_rr" required>
+                                    <select class="form-control" name="id_kategori" id="id_kategori" required>
                                         <option value="" selected disabled>Kategori</option>
                                         <?php
 foreach ($data_kategori as $val) {?>
@@ -141,9 +132,9 @@ foreach ($data_kategori as $val) {?>
 
                             <div class="col-lg-12">
                                 <div class="mb-3">
-                                    <label for="teammembersName" class="form-label">Judul Rapat</label>
-                                    <input type="text" class="form-control" id="judul_rapat" name="judul_rapat"
-                                        placeholder="Judul Rapat">
+                                    <label for="teammembersName" class="form-label">Judul Penelitian</label>
+                                    <input type="text" class="form-control" id="judul_penelitian"
+                                        name="judul_penelitian" placeholder="Judul Penelitian">
                                 </div>
                             </div>
                             <!--
@@ -172,7 +163,7 @@ foreach ($data_kategori as $val) {?>
                                                     class="form-control flatpickr flatpickr-input"
                                                     placeholder="Select start time" readonly>
                                                 <span class="input-group-text"><i class="ri-time-line"></i></span> -->
-                                                <input type="text" id="tanggal_rapat" name="tanggal_rapat"
+                                                <input type="text" id="mulai_penelitian" name="mulai_penelitian"
                                                     class="form-control flatpickr flatpickr-input"
                                                     placeholder="Select date" readonly required>
                                                 <span class="input-group-text"><i
@@ -188,7 +179,7 @@ foreach ($data_kategori as $val) {?>
                                                     class="form-control flatpickr flatpickr-input"
                                                     placeholder="Select end time" readonly>
                                                 <span class="input-group-text"><i class="ri-time-line"></i></span> -->
-                                                <input type="text" id="tanggal_rapat" name="tanggal_rapat"
+                                                <input type="text" id="selesai_penelitian" name="selesai_penelitian"
                                                     class="form-control flatpickr flatpickr-input"
                                                     placeholder="Select date" readonly required>
                                                 <span class="input-group-text"><i
@@ -277,11 +268,13 @@ foreach ($data_kategori as $val) {?>
         $("#addmembers").find("input[name='indikator']").val('');
     })
 
-    function save_rr() {
+    function save_pengajuan() {
         var indikator = $("#addmembers").find("input[name='indikator']").val();
         var id = $("#addmembers").find("input[name='id_edit']").val();
-        var nama_rr = $("#addmembers").find("input[name='nama_rr']").val();
-        var deskripsi_rr = CKEDITOR.instances.deskripsi_rr.getData();
+        var judul_penelitian = $("#addmembers").find("input[name='judul_penelitian']").val();
+        var mulai_penelitian = $("#addmembers").find("input[name='mulai_penelitian']").val();
+        var selesai_penelitian = $("#addmembers").find("input[name='selesai_penelitian']").val();
+        var keterangan = CKEDITOR.instances.keterangan.getData();
         var file_gambar = $("#addmembers").find("input[name='file']")[0].files[0];
         var url = '';
 
@@ -292,15 +285,17 @@ foreach ($data_kategori as $val) {?>
         }
 
 
-        if (nama_rr == "" || deskripsi_rr == "") {
+        if (judul_penelitian == "" || keterangan == "") {
             toastr.error('Harap Isi Semua Kolom', 'Error Alert', {
                 timeOut: 5000
             });
         } else {
             var form_data = new FormData();
             form_data.append('id', id);
-            form_data.append('nama_rr', nama_rr);
-            form_data.append('deskripsi_rr', deskripsi_rr);
+            form_data.append('judul_penelitian', judul_penelitian);
+            form_data.append('mulai_penelitian', mulai_penelitian);
+            form_data.append('selesai_penelitian', mulai_penelitian);
+            form_data.append('keterangan', keterangan);
             form_data.append('file_gambar', file_gambar);
 
             $.ajax({
@@ -314,8 +309,8 @@ foreach ($data_kategori as $val) {?>
                 success: function(data, status) {
                     if (data.status != 'error') {
                         $("#addmembers").find("input[name='id_edit']").val('');
-                        $("#addmembers").find("input[name='nama_rr']").val('');
-                        $("#addmembers").find("input[name='deskripsi_rr']").val('');
+                        $("#addmembers").find("input[name='judul_penelitian']").val('');
+                        $("#addmembers").find("input[name='keterangan']").val('');
                         $(".modal").modal('hide');
                         location.reload();
                         toastr.success(data.msg, 'Success Alert', {
