@@ -45,22 +45,26 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">No</th>
-                                                <th scope="col">Nama RR</th>
-                                                <th scope="col">Fasilitas</th>
-                                                <th scope="col">Foto/Gambar</th>
+                                                <th scope="col">Nama</th>
+                                                <th scope="col">Keperluan</th>
+                                                <th scope="col">Judul Penelitian</th>
+                                                <th scope="col">Keterangan</th>
+                                                <th scope="col">Dokumen</th>
                                                 <th scope="col">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-$count = 0;
-foreach ($data_rr as $val) {
-    $count = $count + 1;
-    ?>
+                                                $count = 0;
+                                                foreach ($data_izin as $val) {
+                                                $count = $count + 1;
+                                            ?>
                                             <tr>
                                                 <td style="width: 5%; vertical-align"><?php echo $count; ?></td>
-                                                <td style="width: 20%; vertical-align"><?php echo $val->nama_rr; ?></td>
-                                                <td style="width: 20%; vertical-align"><?php echo $val->deskripsi_rr; ?>
+                                                <td style="width: 5%; vertical-align"><?php echo help_nama_user($val->id_user); ?></td>
+                                                <td style="width: 20%; vertical-align"><?php echo help_nama_kategori($val->id_kategori); ?></td>
+                                                <td style="width: 20%; vertical-align"><?php echo $val->judul_penelitian; ?>
+                                                <td style="width: 20%; vertical-align"><?php echo $val->keterangan; ?>
                                                 </td>
                                                 <td style="width: 20%; vertical-align">
                                                     <?php echo '<button type="button" class="btn btn-warning btn-animation waves-effect waves-light" title="Foto" onclick="detail_foto(' . "'" . $val->id . "'" . ')"><i class="las la-photo-video"></i></button> &nbsp;' ?>
@@ -118,10 +122,9 @@ foreach ($data_rr as $val) {
                                     <select class="form-control" name="id_rr" id="id_rr" required>
                                         <option value="" selected disabled>Kategori</option>
                                         <?php
-foreach ($data_rr as $val) {?>
-                                        <option value="<?=$val->id;?>"
-                                            <?=$data_reservasi[0]->id == $val->id ? ' selected="selected"' : '';?>>
-                                            <?=$val->nama_rr;?></option>;
+                                            foreach ($data_kategori as $val) {?>
+                                        <option value="<?=$val->id;?>";?>
+                                            <?=$val->kategori;?></option>;
                                         <?php }?>
                                     </select>
                                 </div>

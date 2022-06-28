@@ -157,4 +157,32 @@ function help_rr($id_rr){
     }
 }
 
+function help_nama_kategori($id_kategori){
+    $CI =  &get_instance();
+    $CI->db->select('*');
+    $CI->db->where('id', $id_kategori); 
+    $query=$CI->db->get('master_keperluan')->row();
+
+    if($query){
+        return $query->kategori;
+    } else {
+        return "Kategori Tidak Ditemukan";
+    }
+    
+}
+
+function help_nama_user($id_user){
+    $CI =  &get_instance();
+    $CI->db->select('*');
+    $CI->db->where('id', $id_user); 
+    $query=$CI->db->get('users')->row();
+
+    if($query){
+        return $query->nama;
+    } else {
+        return "Nama Tidak Ditemukan";
+    }
+    
+}
+
 ?>
