@@ -261,6 +261,13 @@ foreach ($data_izin as $val) {
 
     $('#addmembers').on('hidden.bs.modal', function() {
         $("#addmembers").find("input[name='indikator']").val('');
+        $("#addmembers").find("input[name='id_edit']").val('');
+        $("#addmembers").find("input[name='judul_penelitian']").val('');
+        $("#addmembers").find("input[name='mulai_penelitian']").val('');
+        $("#addmembers").find("input[name='selesai_penelitian']").val('');
+        $("#addmembers").find("input[name='keterangan']").val('');
+        $("#addmembers").find("select[name='kategori']").val('');
+        $("#addmembers").find("input[name='file_gambar']").val('');
     })
 
     function save_pengajuan() {
@@ -361,12 +368,12 @@ foreach ($data_izin as $val) {
 
         $.ajax({
             dataType: 'json',
-            url: 'master-rr/ambil-data-by-id/' + id,
+            url: 'pengajuan/ambil-data-by-id/' + id,
             success: function(data) {
-                var nama_rr = data.data[0].nama_rr;
+                var judul_penelitian = data.data[0].judul_penelitian;
                 Swal.fire({
                     title: 'Hapus Data',
-                    text: "Apakah Anda Yakin Untuk Menghapus : " + nama_rr,
+                    text: "Apakah Anda Yakin Untuk Menghapus : " + judul_penelitian,
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonClass: "btn btn-primary w-xs me-2 mt-2",
@@ -380,7 +387,7 @@ foreach ($data_izin as $val) {
                         $.ajax({
                             dataType: 'json',
                             type: 'POST',
-                            url: 'master-rr/remove/' + id,
+                            url: 'pengajuan/remove/' + id,
                             data: {
                                 id: id
                             },
@@ -392,7 +399,7 @@ foreach ($data_izin as $val) {
                                     confirmButtonClass: "btn btn-primary w-xs mt-2",
                                     buttonsStyling: !1
                                 }).then(function() {
-                                    window.location.reload();
+                                    location.reload();
                                 });
                             },
                             failure: function(response) {

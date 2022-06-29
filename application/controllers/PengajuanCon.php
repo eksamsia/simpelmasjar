@@ -72,7 +72,7 @@ class PengajuanCon extends DefaultController
                 'mulai_penelitian' => $this->input->post("mulai_penelitian"),
                 'selesai_penelitian' => $this->input->post("selesai_penelitian"),
                 'keterangan' => $this->input->post("keterangan"),
-                'id_kategori' => $this->input->post("kategori"),
+                'id_kategori' => $this->input->post("id_kategori"),
                 'upload_file' => $imgpath,
             );
 
@@ -111,7 +111,7 @@ class PengajuanCon extends DefaultController
                     'mulai_penelitian' => $this->input->post("mulai_penelitian"),
                     'selesai_penelitian' => $this->input->post("selesai_penelitian"),
                     'keterangan' => $this->input->post("keterangan"),
-                    'id_kategori' => $this->input->post("kategori"),
+                    'id_kategori' => $this->input->post("id_kategori"),
                     'upload_file' => $imgpath,
                 );
 
@@ -234,6 +234,29 @@ class PengajuanCon extends DefaultController
         echo json_encode(array('status' => $status, 'msg' => $msg));
     }
 
-    
+    public function delete($id) {
+        $this->load->database();
+        $status = "";
+        $msg = "";
+
+        $where = array(
+        'id'  => $_POST['id']);
+
+  
+        $this->db->where('id', $id);
+        $delete_rr = $this->db->delete('pengajuan');
+
+        if($delete_rr == true)
+        {
+            $status = "success";
+            $msg = "Success Delete";
+        }
+        else
+        {
+            $status = "error";
+            $msg = "Error Delete";  
+        }
+        echo json_encode(array('status' => $status, 'msg' => $msg));
+    }
 
 }
