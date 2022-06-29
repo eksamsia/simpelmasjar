@@ -54,7 +54,7 @@ class PengajuanCon extends DefaultController
         $config['upload_path'] = './upload_file/gambar_file/';
         $config['allowed_types'] = 'gif|jpg|png|jpeg';
         $config['max_size'] = 1024 * 8;
-        $config['encrypt_name'] = true;
+        $config['encrypt_name'] = false;
 
         $this->upload->initialize($config);
         $this->load->library('upload', $config);
@@ -90,7 +90,7 @@ class PengajuanCon extends DefaultController
             $config['upload_path'] = './upload_file/gambar_file/';
             $config['allowed_types'] = 'gif|jpg|png|jpeg';
             $config['max_size'] = 1024 * 8;
-            $config['encrypt_name'] = true;
+            $config['encrypt_name'] = false;
 
             $this->upload->initialize($config);
             $this->load->library('upload', $config);
