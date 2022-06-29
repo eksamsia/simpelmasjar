@@ -5,7 +5,7 @@
     <?php
 $get_data = $this->db->get('kontak')->row();
 ?>
-    <title>Login | E-Ruang Rapat</title>
+    <title>Login |SIMPELMASJAR</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->

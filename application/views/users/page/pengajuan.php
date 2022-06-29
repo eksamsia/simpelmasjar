@@ -123,7 +123,7 @@ foreach ($data_izin as $val) {
                                     <select class="form-control" name="id_kategori" id="id_kategori" required>
                                         <option value="" selected disabled>Kategori</option>
                                         <?php
-                                            foreach ($data_kategori as $val) {?>
+foreach ($data_kategori as $val) {?>
                                         <option value="<?=$val->id;?>" ;?>
                                             <?=$val->kategori;?></option>;
                                         <?php }?>
@@ -203,7 +203,7 @@ foreach ($data_izin as $val) {
                                         <a href="" id="link_download" target="_blank"
                                             class="btn btn-warning btn-label waves-effect waves-light"><i
                                                 class=" ri-download-cloud-2-fill label-icon align-middle fs-16 me-2"></i>
-                                            </a>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -259,8 +259,8 @@ foreach ($data_izin as $val) {
 
     <script type="text/javascript">
     CKEDITOR.replace('keterangan'); // inisiasi deskripsi/fasilitas
-
-    var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1]+'/'; 
+    //memanggil url file gambar di upload_file
+    var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1] + '/';
 
     $('#addmembers').on('hidden.bs.modal', function() {
         $("#addmembers").find("input[name='indikator']").val('');
@@ -271,6 +271,7 @@ foreach ($data_izin as $val) {
         $("#addmembers").find("input[name='keterangan']").val('');
         $("#addmembers").find("select[name='kategori']").val('');
         $("#addmembers").find("input[name='file_gambar']").val('');
+        //menambah preview file gambar
         $("#addmembers").find("a[id='link_download']").text('');
         $("#addmembers").find("a[id='link_download']").removeAttr("href");
     })
@@ -353,7 +354,7 @@ foreach ($data_izin as $val) {
             success: function(data) {
                 console.log(data);
                 var filename = data.data[0].upload_file.split('/').pop();
-                
+
                 $("#addmembers").find("input[name='indikator']").val(69);
                 $("#addmembers").find("input[name='id_edit']").val(data.data[0].id);
                 $("#addmembers").find("input[name='judul_penelitian']").val(data.data[0].judul_penelitian);
@@ -361,7 +362,8 @@ foreach ($data_izin as $val) {
                 $("#addmembers").find("input[name='selesai_penelitian']").val(data.data[0]
                     .selesai_penelitian);
                 $("#addmembers").find("select[name='id_kategori']").val(data.data[0].id_kategori);
-                $("#addmembers").find("a[id='link_download']").attr("href",baseUrl + data.data[0].upload_file);
+                $("#addmembers").find("a[id='link_download']").attr("href", baseUrl + data.data[0]
+                    .upload_file);
                 $("#addmembers").find("a[id='link_download']").text('' + filename);
                 CKEDITOR.instances.keterangan.setData(data.data[0].keterangan);
                 $('#addmembers').modal('show');
