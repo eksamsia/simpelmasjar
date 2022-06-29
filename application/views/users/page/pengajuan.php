@@ -334,13 +334,17 @@ foreach ($data_izin as $val) {
     function update(id) {
         $.ajax({
             dataType: 'json',
-            url: 'master-rr/ambil-data-by-id/' + id,
+            url: 'pengajuan/ambil-data-by-id/' + id,
             success: function(data) {
                 console.log(data);
                 $("#addmembers").find("input[name='indikator']").val(69);
                 $("#addmembers").find("input[name='id_edit']").val(data.data[0].id);
-                $("#addmembers").find("input[name='nama_rr']").val(data.data[0].nama_rr);
-                CKEDITOR.instances.deskripsi_rr.setData(data.data[0].deskripsi_rr);
+                $("#addmembers").find("input[name='judul_penelitian']").val(data.data[0].judul_penelitian);
+                $("#addmembers").find("input[name='mulai_penelitian']").val(data.data[0].mulai_penelitian);
+                $("#addmembers").find("input[name='selesai_penelitian']").val(data.data[0].selesai_penelitian);
+                $("#addmembers").find("input[name='kategori']").val(data.data[0].kategori);
+                $("#addmembers").find("input[name='file_gambar']").val(data.data[0].file_gambar);
+                CKEDITOR.instances.keterangan.setData(data.data[0].keterangan);
                 $('#addmembers').modal('show');
             },
             error: function(data) {
