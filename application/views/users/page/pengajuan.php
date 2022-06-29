@@ -119,7 +119,7 @@ foreach ($data_izin as $val) {
                                 <div class="mb-3">
                                     <label for="teammembersName" class="form-label">Keperluan</label>
                                     <input type="hidden" class="form-control" id="id_edit" name="id_edit">
-                                    <input type="text" class="form-control" id="indikator" name="indikator">
+                                    <input type="hidden" class="form-control" id="indikator" name="indikator">
                                     <select class="form-control" name="id_kategori" id="id_kategori" required>
                                         <option value="" selected disabled>Kategori</option>
                                         <?php
