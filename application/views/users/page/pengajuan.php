@@ -119,10 +119,11 @@ foreach ($data_izin as $val) {
                                 <div class="mb-3">
                                     <label for="teammembersName" class="form-label">Keperluan</label>
                                     <input type="hidden" class="form-control" id="id_edit" name="id_edit">
+                                    <input type="text" class="form-control" id="indikator" name="indikator">
                                     <select class="form-control" name="id_kategori" id="id_kategori" required>
                                         <option value="" selected disabled>Kategori</option>
                                         <?php
-foreach ($data_kategori as $val) {?>
+                                            foreach ($data_kategori as $val) {?>
                                         <option value="<?=$val->id;?>" ;?>
                                             <?=$val->kategori;?></option>;
                                         <?php }?>
@@ -289,13 +290,13 @@ foreach ($data_kategori as $val) {?>
             });
         } else {
             var form_data = new FormData();
-            form_data.append('id', id);
+            form_data.append('id_edit', id);
             form_data.append('judul_penelitian', judul_penelitian);
             form_data.append('mulai_penelitian', mulai_penelitian);
             form_data.append('selesai_penelitian', selesai_penelitian);
             form_data.append('keterangan', keterangan);
             form_data.append('file_gambar', file_gambar);
-            form_data.append('kategori', kategori);
+            form_data.append('id_kategori', kategori);
 
             $.ajax({
                 dataType: 'json',
@@ -430,9 +431,9 @@ foreach ($data_kategori as $val) {?>
         var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
         $.ajax({
             dataType: 'json',
-            url: 'master-rr/ambil-data-by-id/' + id,
+            url: 'pengajuan/ambil-data-by-id/' + id,
             success: function(data) {
-                url_gambar = baseUrl + '/' + data.data[0].filepath;
+                url_gambar = baseUrl + '/' + data.data[0].upload_file;
                 $("#modal_gambar").find("#gambar").attr("src", url_gambar);
                 $('#modal_gambar').modal('show');
                 console.log(url_gambar);

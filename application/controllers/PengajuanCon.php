@@ -171,8 +171,7 @@ class PengajuanCon extends DefaultController
                 'mulai_penelitian' => $this->input->post("mulai_penelitian"),
                 'selesai_penelitian' => $this->input->post("selesai_penelitian"),
                 'keterangan' => $this->input->post("keterangan"),
-                'id_kategori' => $this->input->post("id_kategori"),
-                'upload_file' => $imgpath,
+                'id_kategori' => $this->input->post("id_kategori")
             );
 
             $this->db->where($where);
@@ -206,7 +205,7 @@ class PengajuanCon extends DefaultController
                 $imgpath = $a . $b;
 
                 $where = array(
-                    'id' => $_POST['id']);
+                    'id' => $this->input->post('id_edit'));
 
                 $data = array(
                     'id_user' => $this->session->userdata('userid'),
@@ -234,5 +233,7 @@ class PengajuanCon extends DefaultController
         }
         echo json_encode(array('status' => $status, 'msg' => $msg));
     }
+
+    
 
 }
