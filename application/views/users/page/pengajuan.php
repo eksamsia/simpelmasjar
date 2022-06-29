@@ -122,7 +122,7 @@ foreach ($data_izin as $val) {
                                     <select class="form-control" name="id_kategori" id="id_kategori" required>
                                         <option value="" selected disabled>Kategori</option>
                                         <?php
-                                            foreach ($data_kategori as $val) {?>
+foreach ($data_kategori as $val) {?>
                                         <option value="<?=$val->id;?>" ;?>
                                             <?=$val->kategori;?></option>;
                                         <?php }?>
@@ -163,7 +163,8 @@ foreach ($data_izin as $val) {
                                                     class="form-control flatpickr flatpickr-input"
                                                     placeholder="Select start time" readonly>
                                                 <span class="input-group-text"><i class="ri-time-line"></i></span> -->
-                                                <input type="date" id="mulai_penelitian" name="mulai_penelitian" class="form-control flatpickr flatpickr-input">
+                                                <input type="date" id="mulai_penelitian" name="mulai_penelitian"
+                                                    class="form-control flatpickr flatpickr-input">
                                             </div>
                                         </div>
                                     </div>
@@ -175,7 +176,8 @@ foreach ($data_izin as $val) {
                                                     class="form-control flatpickr flatpickr-input"
                                                     placeholder="Select end time" readonly>
                                                 <span class="input-group-text"><i class="ri-time-line"></i></span> -->
-                                                <input type="date" id="selesai_penelitian" name="selesai_penelitian" class="form-control flatpickr flatpickr-input">
+                                                <input type="date" id="selesai_penelitian" name="selesai_penelitian"
+                                                    class="form-control flatpickr flatpickr-input">
                                             </div>
                                         </div>
                                     </div>
@@ -312,7 +314,7 @@ foreach ($data_izin as $val) {
                         $("#addmembers").find("input[name='keterangan']").val('');
                         $("#addmembers").find("select[name='kategori']").val('');
                         $("#addmembers").find("input[name='file_gambar']").val('');
-                    
+
                         $(".modal").modal('hide');
                         location.reload();
                         toastr.success(data.msg, 'Success Alert', {
@@ -341,8 +343,9 @@ foreach ($data_izin as $val) {
                 $("#addmembers").find("input[name='id_edit']").val(data.data[0].id);
                 $("#addmembers").find("input[name='judul_penelitian']").val(data.data[0].judul_penelitian);
                 $("#addmembers").find("input[name='mulai_penelitian']").val(data.data[0].mulai_penelitian);
-                $("#addmembers").find("input[name='selesai_penelitian']").val(data.data[0].selesai_penelitian);
-                $("#addmembers").find("input[name='kategori']").val(data.data[0].kategori);
+                $("#addmembers").find("input[name='selesai_penelitian']").val(data.data[0]
+                    .selesai_penelitian);
+                $("#addmembers").find("select[name='id_kategori']").val(data.data[0].id_kategori);
                 $("#addmembers").find("input[name='file_gambar']").val(data.data[0].file_gambar);
                 CKEDITOR.instances.keterangan.setData(data.data[0].keterangan);
                 $('#addmembers').modal('show');
