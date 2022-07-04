@@ -97,3 +97,4 @@ $route['admin/pengajuan/insert-data']['post'] = 'PengajuanCon/insertData';
 $route['admin/pengajuan/ambil-data-by-id/(:any)'] = 'PengajuanCon/getById/$1';
 $route['admin/pengajuan/edit-data/(:any)'] = 'PengajuanCon/editData/$1';
 $route['admin/pengajuan/remove/(:any)']['post'] = 'PengajuanCon/delete/$1';
+$route['admin/pengajuan/update_approve/(:any)']['post'] = 'PengajuanCon/update_approve/$1';

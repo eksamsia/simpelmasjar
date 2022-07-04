@@ -259,4 +259,32 @@ class PengajuanCon extends DefaultController
         echo json_encode(array('status' => $status, 'msg' => $msg));
     }
 
+    public function update_approve($id) {
+        $this->load->database();
+        $status = "";
+        $msg = "";
+
+        $where = array(
+        'id'  => $this->input->post('id'));
+
+        $data = array(
+            'isApproved' => $this->input->post("isApproved")
+        );
+
+        $this->db->where($where);
+        $doupload = $this->db->update('pengajuan', $data);
+
+        if($doupload == true)
+        {
+            $status = "success";
+            $msg = "Success Approved";
+        }
+        else
+        {
+            $status = "error";
+            $msg = "Error";  
+        }
+        echo json_encode(array('status' => $status, 'msg' => $msg));
+    }
+
 }

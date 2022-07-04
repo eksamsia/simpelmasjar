@@ -60,6 +60,16 @@
 $count = 0;
 foreach ($data_izin as $val) {
     $count = $count + 1;
+    if($this->session->userdata('role')==1){
+        if($val->isApproved==0){
+            $tombol='<button type="button" class="btn btn-soft-success btn-animation waves-effect waves-light" title="Edit" onclick="update_approve(' . "'" . $val->id . "'" . ')"><i class="las la-check-double"></i></button> &nbsp;';
+        }else{
+            $tombol='<button type="button" class="btn btn-soft-danger btn-animation waves-effect waves-light" title="Edit" onclick="update_nonapprove(' . "'" . $val->id . "'" . ')"><i class="las la-times"></i></button> &nbsp;';
+        }
+    } else {
+        $tombol='';
+    }
+    
     ?>
                                             <tr>
                                                 <td style="width: 5%; vertical-align"><?php echo $count; ?></td>
@@ -79,7 +89,7 @@ foreach ($data_izin as $val) {
                                                     <?php echo '<button type="button" class="btn btn-warning btn-animation waves-effect waves-light" title="Foto" onclick="detail_foto(' . "'" . $val->id . "'" . ')"><i class="las la-photo-video"></i></button> &nbsp;' ?>
                                                 </td>
                                                 <td style="width: 10%; vertical-align">
-                                                    <?php echo '<button type="button" class="btn btn-info btn-animation waves-effect waves-light" title="Edit" onclick="update(' . "'" . $val->id . "'" . ')"><i class="las la-pen-fancy"></i></button> &nbsp;' . '<button type="button" class="btn btn-danger btn-animation waves-effect waves-light" title="Hapus" onclick="hapus(' . "'" . $val->id . "'" . ')"><i class="las la-trash"></i></button> &nbsp;'; ?>
+                                                    <?php echo '<button type="button" class="btn btn-info btn-animation waves-effect waves-light" title="Edit" onclick="update(' . "'" . $val->id . "'" . ')"><i class="las la-pen-fancy"></i></button> &nbsp;' . '<button type="button" class="btn btn-danger btn-animation waves-effect waves-light" title="Hapus" onclick="hapus(' . "'" . $val->id . "'" . ')"><i class="las la-trash"></i></button> &nbsp;'.$tombol; ?>
                                                 </td>
                                             </tr>
                                             <?php }?>
@@ -454,6 +464,144 @@ foreach ($data_kategori as $val) {?>
                 $("#modal_gambar").find("#gambar").attr("src", url_gambar);
                 $('#modal_gambar').modal('show');
                 console.log(url_gambar);
+            },
+            error: function(data) {
+                console.log('error');
+            }
+        });
+    }
+
+    function update_approve(id){
+        console.log(id);
+        $.ajax({
+            dataType: 'json',
+            url: 'pengajuan/ambil-data-by-id/' + id,
+            success: function(data) {
+                var judul_penelitian = data.data[0].judul_penelitian;
+                Swal.fire({
+                    title: 'Setujui Proposal',
+                    text: "Apakah Anda Yakin Untuk Menyetujui : " + judul_penelitian,
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonClass: "btn btn-primary w-xs me-2 mt-2",
+                    cancelButtonClass: "btn btn-danger w-xs mt-2",
+                    confirmButtonText: 'Setuju!',
+                    cancelButtonText: 'Batal',
+                    showCloseButton: true,
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            dataType: 'json',
+                            type: 'POST',
+                            url: 'pengajuan/update_approve/' + id,
+                            data: {
+                                id: id,
+                                isApproved:1
+                            },
+                            success: function(response) {
+                                Swal.fire({
+                                    title: "Berhasil!",
+                                    text: "Proposal telah disetujui",
+                                    icon: "success",
+                                    confirmButtonClass: "btn btn-primary w-xs mt-2",
+                                    buttonsStyling: !1
+                                }).then(function() {
+                                    location.reload();
+                                });
+                            },
+                            failure: function(response) {
+                                Swal.fire({
+                                    title: "Gagal!",
+                                    text: "Proposal gagal disetujui",
+                                    icon: "warning",
+                                    confirmButtonClass: "btn btn-primary w-xs mt-2",
+                                    buttonsStyling: !1
+                                }).then(function() {
+                                    window.location.reload();
+                                });
+                            }
+                        });
+                    } else if (
+                        /* Read more about handling dismissals below */
+                        result.dismiss === Swal.DismissReason.cancel
+                    ) {
+                        Swal.fire(
+                            'Dibatalkan',
+                            'Batal Menyetujui Proposal :)',
+                            'error'
+                        )
+                    }
+                })
+            },
+            error: function(data) {
+                console.log('error');
+            }
+        });
+    }
+
+    function update_nonapprove(id){
+        console.log(id);
+        $.ajax({
+            dataType: 'json',
+            url: 'pengajuan/ambil-data-by-id/' + id,
+            success: function(data) {
+                var judul_penelitian = data.data[0].judul_penelitian;
+                Swal.fire({
+                    title: 'Setujui Proposal',
+                    text: "Apakah Anda Yakin Untuk Tidak Menyetujui : " + judul_penelitian,
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonClass: "btn btn-primary w-xs me-2 mt-2",
+                    cancelButtonClass: "btn btn-danger w-xs mt-2",
+                    confirmButtonText: 'Tidak Setuju!',
+                    cancelButtonText: 'Batal',
+                    showCloseButton: true,
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            dataType: 'json',
+                            type: 'POST',
+                            url: 'pengajuan/update_approve/' + id,
+                            data: {
+                                id: id,
+                                isApproved:0
+                            },
+                            success: function(response) {
+                                Swal.fire({
+                                    title: "Maaf!",
+                                    text: "Proposal Belum disetujui",
+                                    icon: "success",
+                                    confirmButtonClass: "btn btn-primary w-xs mt-2",
+                                    buttonsStyling: !1
+                                }).then(function() {
+                                    location.reload();
+                                });
+                            },
+                            failure: function(response) {
+                                Swal.fire({
+                                    title: "Gagal!",
+                                    text: "Gagal Menyetujui Proposal",
+                                    icon: "warning",
+                                    confirmButtonClass: "btn btn-primary w-xs mt-2",
+                                    buttonsStyling: !1
+                                }).then(function() {
+                                    window.location.reload();
+                                });
+                            }
+                        });
+                    } else if (
+                        /* Read more about handling dismissals below */
+                        result.dismiss === Swal.DismissReason.cancel
+                    ) {
+                        Swal.fire(
+                            'Dibatalkan',
+                            'Batal Menyetujui Proposal :)',
+                            'error'
+                        )
+                    }
+                })
             },
             error: function(data) {
                 console.log('error');
