@@ -95,7 +95,7 @@ $get_data = $this->db->get('kontak')->row();
                     </div>
                     <br>
                     <div class="center">Belum punya akun?
-                        <a href="https://www.youtube.com/">register</a>
+                        <a href="https://www.youtube.com/">Register</a>
                     </div>
                 </form>
             </div>
