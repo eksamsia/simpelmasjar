@@ -75,16 +75,19 @@ $get_data = $this->db->get('kontak')->row();
 ?>
                     Login | SIMPELMASJAR
                 </span>
+                <?= $this->session->flashdata('message'); ?>
                 <form class="login100-form validate-form p-b-33 p-t-5"
                     action="<?php echo site_url('auth/validatelogin'); ?>" method="post">
 
                     <div class="wrap-input100" data-validate="Enter username">
-                        <input class="input100" type="text" name="username" placeholder="User name">
+                        <input class="input100" type="text" id="username" name="username" placeholder="User name">
+                        <?= form_error('username', '<small class="text-danger pl-3">', '</small>'); ?>
                         <span class="focus-input100" data-placeholder="&#xe82a;"></span>
                     </div>
 
                     <div class="wrap-input100" data-validate="Enter password">
-                        <input class="input100" type="password" name="password" placeholder="Password">
+                        <input class="input100" type="password" id="password" name="password" placeholder="Password">
+                        <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
                         <span class="focus-input100" data-placeholder="&#xe80f;"></span>
                     </div>
 
@@ -95,7 +98,7 @@ $get_data = $this->db->get('kontak')->row();
                     </div>
                     <br>
                     <div class="center">Belum punya akun?
-                        <a href="https://www.youtube.com/">Register</a>
+                        <a href="register">register</a>
                     </div>
                 </form>
             </div>

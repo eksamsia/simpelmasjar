@@ -53,6 +53,9 @@ $route['default_controller']                              = 'AdminController/ind
 $route['404_override']                                    = '';
 $route['translate_uri_dashes']                            = FALSE;
 $route['auth/login']                                      = 'auth/Login/index';
+// $route['auth/register']                                   = 'auth/Auth/registration';
+$route['auth/register']                                   = 'auth/Registration/index';
+$route['auth/submit_reg']                                   = 'auth/Registration/submit_registration';
 $route['auth/validatelogin']                              = 'auth/Auth/validatelogin';
 
 //admin routing

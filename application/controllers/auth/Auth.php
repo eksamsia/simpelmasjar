@@ -18,6 +18,16 @@ class Auth extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+
+
+	
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->library('form_validation');
+
+	}
+
 	public function index()
 	{
 		$this->load->view('users/auth/login');
@@ -66,17 +76,19 @@ class Auth extends CI_Controller {
 			else {
 				if($valid == 1)
 				{
-					$this->session->set_flashdata('error', 'User Tidak Ditemukan');
+					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">User tidak ditemukan</div>');
+					$this->load->view('users/auth/login');
 				}
 				else if($valid == 2)
 				{
-					$this->session->set_flashdata('error', 'User Tidak Aktif');
+					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">User tidak aktif</div>');
+					$this->load->view('users/auth/login');
 				}
 				else if($valid == 3)
 				{
-					$this->session->set_flashdata('error', 'Password Salah');
+					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password salah</div>');
+					$this->load->view('users/auth/login');
 				}	
-				redirect('auth/login');		
 			}
 		}
 		else {

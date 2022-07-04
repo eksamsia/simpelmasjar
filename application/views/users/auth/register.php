@@ -5,7 +5,7 @@
     <?php
 $get_data = $this->db->get('kontak')->row();
 ?>
-    <title>Register| SIMPELMASJAR</title>
+    <title>Register | SIMPELMASJAR</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -71,32 +71,50 @@ $get_data = $this->db->get('kontak')->row();
             <div class="wrap-login100 p-t-30 p-b-50">
                 <span class="login100-form-title p-b-41">
                     <?php
-$get_data = $this->db->get('kontak')->row();
-?>
+                    $get_data = $this->db->get('kontak')->row();
+                    ?>
                     Register | SIMPELMASJAR
                 </span>
-                <form class="login100-form validate-form p-b-33 p-t-5"
-                    action="<?php echo site_url('auth/validatelogin'); ?>" method="post">
+                <?= $this->session->flashdata('message'); ?>
+                <form class="login100-form validate-form p-b-33 p-t-5" action="<?php echo site_url('auth/submit_reg'); ?>" method="post">
+
+                    <div class="wrap-input100" data-validate="Enter name">
+                        <input class="input100" type="text" id="name" name="name" placeholder="Nama Lengkap" value="<?= set_value('name'); ?>">
+                        <?= form_error('name', '<small class="text-danger pl-3">', '</small>'); ?>
+                        <span class="focus-input100" data-placeholder="&#xe82a;"></span>
+                    </div>
 
                     <div class="wrap-input100" data-validate="Enter username">
-                        <input class="input100" type="text" name="username" placeholder="User name">
+                        <input class="input100" type="text" id="username" name="username" placeholder="Username" value="<?= set_value('username'); ?>">
+                        <?= form_error('username', '<small class="text-danger pl-3">', '</small>'); ?>
                         <span class="focus-input100" data-placeholder="&#xe82a;"></span>
                     </div>
 
                     <div class="wrap-input100" data-validate="Enter password">
-                        <input class="input100" type="password" name="password" placeholder="Password">
+                        <input class="input100" type="password" id="password1" name="password1" placeholder="Password">
+                        <?= form_error('password1', '<small class="text-danger pl-3">', '</small>'); ?>
+                        <span class="focus-input100" data-placeholder="&#xe82a;"></span>
+                    </div>
+
+                    <div class="wrap-input100" data-validate="Enter confirm password">
+                        <input class="input100" type="password" id="password2" name="password2" placeholder="Confirm Password">
+                        <?= form_error('password2', '<small class="text-danger pl-3">', '</small>'); ?>
                         <span class="focus-input100" data-placeholder="&#xe80f;"></span>
                     </div>
 
                     <div class="container-login100-form-btn m-t-32">
                         <button class="login100-form-btn" type="submit" name="submit" value="login">
-                            Login
+                            Register
                         </button>
                     </div>
                     <br>
-                    <div class="center">Belum punya akun?
-                        <a href="https://www.youtube.com/">register</a>
+                    <div class="center">Sudah punya akun?
+                        <a href="login">login</a>
                     </div>
+
+                    <div class="center">Lupa Password
+                    </div>
+                    <br>
                 </form>
             </div>
 
