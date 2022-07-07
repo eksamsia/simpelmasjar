@@ -14,7 +14,7 @@ class PengajuanCon extends DefaultController
     public function index()
     {
         $data['data_kategori'] = $this->get_kategori();
-        $data['data_izin'] = $this->get_izin();
+        $data['data_pengajuan'] = $this->get_pengajuan();
         $this->load->view('users/page/pengajuan', $data);
     }
 
@@ -26,10 +26,13 @@ class PengajuanCon extends DefaultController
         return $this->db->get('master_keperluan')->result();
     }
 
-    private function get_izin()
+    private function get_pengajuan()
     {
         $this->load->database();
         $this->db->select('*');
+        if($this->session->userdata('role')!=1){
+            $this->db->where('id_user', $this->session->userdata('userid'));
+        }
         $this->db->order_by("id", "asc");
         return $this->db->get('pengajuan')->result();
     }
@@ -71,8 +74,16 @@ class PengajuanCon extends DefaultController
                 'judul_penelitian' => $this->input->post("judul_penelitian"),
                 'mulai_penelitian' => $this->input->post("mulai_penelitian"),
                 'selesai_penelitian' => $this->input->post("selesai_penelitian"),
-                'keterangan' => $this->input->post("keterangan"),
+                'perihal' => $this->input->post("perihal"),
                 'id_kategori' => $this->input->post("id_kategori"),
+                'nama_pejabat' => $this->input->post("nama_pejabat"),
+                'no_surat' => $this->input->post("no_surat"),
+                'status_pemohon' => $this->input->post("status_pemohon"),
+                'no_wa' => $this->input->post("no_wa"),
+                'lokasi' => $this->input->post("lokasi"),
+                'alamat' => $this->input->post("alamat"),
+                'lama_kegiatan' => $this->input->post("lama_kegiatan"),
+                'jumlah_anggota' => $this->input->post("jumlah_anggota"),
                 'upload_file' => $imgpath,
             );
 
@@ -110,8 +121,16 @@ class PengajuanCon extends DefaultController
                     'judul_penelitian' => $this->input->post("judul_penelitian"),
                     'mulai_penelitian' => $this->input->post("mulai_penelitian"),
                     'selesai_penelitian' => $this->input->post("selesai_penelitian"),
-                    'keterangan' => $this->input->post("keterangan"),
+                    'perihal' => $this->input->post("perihal"),
                     'id_kategori' => $this->input->post("id_kategori"),
+                    'nama_pejabat' => $this->input->post("nama_pejabat"),
+                    'no_surat' => $this->input->post("no_surat"),
+                    'status_pemohon' => $this->input->post("status_pemohon"),
+                    'no_wa' => $this->input->post("no_wa"),
+                    'lokasi' => $this->input->post("lokasi"),
+                    'alamat' => $this->input->post("alamat"),
+                    'lama_kegiatan' => $this->input->post("lama_kegiatan"),
+                    'jumlah_anggota' => $this->input->post("jumlah_anggota"),
                     'upload_file' => $imgpath,
                 );
 
@@ -166,12 +185,20 @@ class PengajuanCon extends DefaultController
                 'id' => $this->input->post('id_edit'));
 
             $data = array(
-                'id_user' => $this->session->userdata('userid'),
+                'id_user' => $this->session->userdata("userid"),
                 'judul_penelitian' => $this->input->post("judul_penelitian"),
                 'mulai_penelitian' => $this->input->post("mulai_penelitian"),
                 'selesai_penelitian' => $this->input->post("selesai_penelitian"),
-                'keterangan' => $this->input->post("keterangan"),
-                'id_kategori' => $this->input->post("id_kategori")
+                'perihal' => $this->input->post("perihal"),
+                'id_kategori' => $this->input->post("id_kategori"),
+                'nama_pejabat' => $this->input->post("nama_pejabat"),
+                'no_surat' => $this->input->post("no_surat"),
+                'status_pemohon' => $this->input->post("status_pemohon"),
+                'no_wa' => $this->input->post("no_wa"),
+                'lokasi' => $this->input->post("lokasi"),
+                'alamat' => $this->input->post("alamat"),
+                'lama_kegiatan' => $this->input->post("lama_kegiatan"),
+                'jumlah_anggota' => $this->input->post("jumlah_anggota"),
             );
 
             $this->db->where($where);
@@ -208,12 +235,20 @@ class PengajuanCon extends DefaultController
                     'id' => $this->input->post('id_edit'));
 
                 $data = array(
-                    'id_user' => $this->session->userdata('userid'),
+                    'id_user' => $this->session->userdata("userid"),
                     'judul_penelitian' => $this->input->post("judul_penelitian"),
                     'mulai_penelitian' => $this->input->post("mulai_penelitian"),
                     'selesai_penelitian' => $this->input->post("selesai_penelitian"),
-                    'keterangan' => $this->input->post("keterangan"),
+                    'perihal' => $this->input->post("perihal"),
                     'id_kategori' => $this->input->post("id_kategori"),
+                    'nama_pejabat' => $this->input->post("nama_pejabat"),
+                    'no_surat' => $this->input->post("no_surat"),
+                    'status_pemohon' => $this->input->post("status_pemohon"),
+                    'no_wa' => $this->input->post("no_wa"),
+                    'lokasi' => $this->input->post("lokasi"),
+                    'alamat' => $this->input->post("alamat"),
+                    'lama_kegiatan' => $this->input->post("lama_kegiatan"),
+                    'jumlah_anggota' => $this->input->post("jumlah_anggota"),
                     'upload_file' => $imgpath,
                 );
 

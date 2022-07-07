@@ -58,7 +58,7 @@
                                         <tbody>
                                             <?php
 $count = 0;
-foreach ($data_izin as $val) {
+foreach ($data_pengajuan as $val) {
     $count = $count + 1;
     if($this->session->userdata('role')==1){
         if($val->isApproved==0){
@@ -78,12 +78,13 @@ foreach ($data_izin as $val) {
                                                 <td style="width: 20%; vertical-align">
                                                     <?php echo help_nama_kategori($val->id_kategori); ?></td>
                                                 <td style="width: 20%; vertical-align">
-                                                    <?php echo $val->mulai_penelitian; ?></td>
+                                                    <?php echo $val->no_surat; ?></td>
                                                 <td style="width: 20%; vertical-align">
                                                     <?php echo $val->selesai_penelitian; ?></td>
                                                 <td style="width: 20%; vertical-align">
                                                     <?php echo $val->judul_penelitian; ?>
-                                                <td style="width: 20%; vertical-align"><?php echo $val->keterangan; ?>
+                                                <td style="width: 20%; vertical-align">
+                                                    <?php echo $val->perihal; ?>
                                                 </td>
                                                 <td style="width: 20%; vertical-align">
                                                     <?php echo '<button type="button" class="btn btn-warning btn-animation waves-effect waves-light" title="Foto" onclick="detail_foto(' . "'" . $val->id . "'" . ')"><i class="las la-photo-video"></i></button> &nbsp;' ?>
@@ -133,7 +134,7 @@ foreach ($data_izin as $val) {
                                     <select class="form-control" name="id_kategori" id="id_kategori" required>
                                         <option value="" selected disabled>Kategori</option>
                                         <?php
-foreach ($data_kategori as $val) {?>
+                                            foreach ($data_kategori as $val) {?>
                                         <option value="<?=$val->id;?>" ;?>
                                             <?=$val->kategori;?></option>;
                                         <?php }?>
@@ -148,6 +149,88 @@ foreach ($data_kategori as $val) {?>
                                         name="judul_penelitian" placeholder="Judul Penelitian">
                                 </div>
                             </div>
+
+                            <div class="col-12">
+                                <!-- ++++++++++ JAM RAPAT +++++++++++++++ -->
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="mb-3">
+                                        <label class="form-label">Nama Pejabat</label>
+                                            <div class="input-group">
+                                                <!-- <input id="jam_mulai" name="jam_mulai" type="text"
+                                                    class="form-control flatpickr flatpickr-input"
+                                                    placeholder="Select start time" readonly>
+                                                <span class="input-group-text"><i class="ri-time-line"></i></span> -->
+                                                <input type="text" class="form-control" id="nama_pejabat"
+                                                name="nama_pejabat" placeholder="Nama Pejabat">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="mb-3">
+                                        <label class="form-label">No. Surat</label>
+                                            <div class="input-group">
+                                                <!-- <input id="jam_mulai" name="jam_mulai" type="text"
+                                                    class="form-control flatpickr flatpickr-input"
+                                                    placeholder="Select start time" readonly>
+                                                <span class="input-group-text"><i class="ri-time-line"></i></span> -->
+                                                <input type="text" class="form-control" id="no_surat"
+                                                name="no_surat" placeholder="Nomor Surat">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <!-- ++++++++++ JAM RAPAT +++++++++++++++ -->
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="mb-3">
+                                        <label class="form-label">Status Pemohon</label>
+                                            <div class="input-group">
+                                                <!-- <input id="jam_mulai" name="jam_mulai" type="text"
+                                                    class="form-control flatpickr flatpickr-input"
+                                                    placeholder="Select start time" readonly>
+                                                <span class="input-group-text"><i class="ri-time-line"></i></span> -->
+                                                <input type="text" class="form-control" id="status_pemohon"
+                                                name="status_pemohon" placeholder="Status Pemohon">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="mb-3">
+                                        <label class="form-label">No. Whatsapp</label>
+                                            <div class="input-group">
+                                                <!-- <input id="jam_mulai" name="jam_mulai" type="text"
+                                                    class="form-control flatpickr flatpickr-input"
+                                                    placeholder="Select start time" readonly>
+                                                <span class="input-group-text"><i class="ri-time-line"></i></span> -->
+                                                <input type="text" class="form-control" id="no_wa"
+                                                name="no_wa" placeholder="No. Whatsapp">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="mb-3">
+                                    <label for="teammembersName" class="form-label">Lokasi Kegiatan</label>
+                                    <input type="text" class="form-control" id="lokasi"
+                                        name="lokasi" placeholder="Lokasi Kegiatan">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="mb-3">
+                                    <label for="teammembersName" class="form-label">Alamat Pemohon</label>
+                                    <input type="text" class="form-control" id="alamat"
+                                        name="alamat" placeholder="Alamat Pemohon">
+                                </div>
+                            </div>
+
+                            
                             <!--
                             <div class="col-12">
                                 < +++++++++ TANGGAL RAPAT +++++++++++ -->
@@ -162,6 +245,38 @@ foreach ($data_kategori as $val) {?>
                                 </div>
                             </div> -->
                             <!-- end col -->
+
+                            <div class="col-12">
+                                <!-- ++++++++++ JAM RAPAT +++++++++++++++ -->
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="mb-3">
+                                        <label class="form-label">Lama Kegiatan</label>
+                                            <div class="input-group">
+                                                <!-- <input id="jam_mulai" name="jam_mulai" type="text"
+                                                    class="form-control flatpickr flatpickr-input"
+                                                    placeholder="Select start time" readonly>
+                                                <span class="input-group-text"><i class="ri-time-line"></i></span> -->
+                                                <input type="text" class="form-control" id="lama_kegiatan"
+                                                name="lama_kegiatan" placeholder="Lama Kegiatan">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="mb-3">
+                                        <label class="form-label">Jumlah Anggota</label>
+                                            <div class="input-group">
+                                                <!-- <input id="jam_mulai" name="jam_mulai" type="text"
+                                                    class="form-control flatpickr flatpickr-input"
+                                                    placeholder="Select start time" readonly>
+                                                <span class="input-group-text"><i class="ri-time-line"></i></span> -->
+                                                <input type="text" class="form-control" id="jumlah_anggota"
+                                                name="jumlah_anggota" placeholder="Jumlah Anggota">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="col-12" id="event-time">
                                 <!-- ++++++++++ JAM RAPAT +++++++++++++++ -->
@@ -198,9 +313,9 @@ foreach ($data_kategori as $val) {?>
 
                             <div class="col-lg-12">
                                 <div class="mb-3">
-                                    <label for="teammembersName" class="form-label">Keterangan</label>
-                                    <textarea name="keterangan" id="keterangan" rows="10" cols="80"
-                                        class="form-control"></textarea>
+                                    <label for="teammembersName" class="form-label">Perihal Surat</label>
+                                    <input type="text" class="form-control" id="perihal"
+                                        name="perihal" placeholder="Perihal Surat">
                                 </div>
                             </div>
 
@@ -268,7 +383,7 @@ foreach ($data_kategori as $val) {?>
     <?php $this->load->view('users/layout/new-footer');?>
 
     <script type="text/javascript">
-    CKEDITOR.replace('keterangan'); // inisiasi deskripsi/fasilitas
+    // inisiasi deskripsi/fasilitas
     //memanggil url file gambar di upload_file
     var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1] + '/';
 
@@ -278,7 +393,15 @@ foreach ($data_kategori as $val) {?>
         $("#addmembers").find("input[name='judul_penelitian']").val('');
         $("#addmembers").find("input[name='mulai_penelitian']").val('');
         $("#addmembers").find("input[name='selesai_penelitian']").val('');
-        $("#addmembers").find("input[name='keterangan']").val('');
+        $("#addmembers").find("input[name='nama_pejabat']").val('');
+        $("#addmembers").find("input[name='no_surat']").val('');
+        $("#addmembers").find("input[name='status_pemohon']").val('');
+        $("#addmembers").find("input[name='no_wa']").val('');
+        $("#addmembers").find("input[name='lokasi']").val('');
+        $("#addmembers").find("input[name='alamat']").val('');
+        $("#addmembers").find("input[name='lama_kegiatan']").val('');
+        $("#addmembers").find("input[name='jumlah_anggota']").val('');
+        $("#addmembers").find("input[name='perihal']").val('');
         $("#addmembers").find("select[name='kategori']").val('');
         $("#addmembers").find("input[name='file_gambar']").val('');
         //menambah preview file gambar
@@ -292,8 +415,16 @@ foreach ($data_kategori as $val) {?>
         var judul_penelitian = $("#addmembers").find("input[name='judul_penelitian']").val();
         var mulai_penelitian = $("#addmembers").find("input[name='mulai_penelitian']").val();
         var selesai_penelitian = $("#addmembers").find("input[name='selesai_penelitian']").val();
+        var nama_pejabat = $("#addmembers").find("input[name='nama_pejabat']").val();
+        var no_surat = $("#addmembers").find("input[name='no_surat']").val();
+        var status_pemohon = $("#addmembers").find("input[name='status_pemohon']").val();
+        var no_wa = $("#addmembers").find("input[name='no_wa']").val();
+        var lokasi = $("#addmembers").find("input[name='lokasi']").val();
+        var alamat = $("#addmembers").find("input[name='alamat']").val();
+        var lama_kegiatan = $("#addmembers").find("input[name='lama_kegiatan']").val();
+        var jumlah_anggota = $("#addmembers").find("input[name='jumlah_anggota']").val();
         var kategori = $("#addmembers").find("select[name='id_kategori']").val();
-        var keterangan = CKEDITOR.instances.keterangan.getData();
+        var perihal = $("#addmembers").find("input[name='perihal']").val();
         var file_gambar = $("#addmembers").find("input[name='file']")[0].files[0];
         var url = '';
 
@@ -307,7 +438,7 @@ foreach ($data_kategori as $val) {?>
         }
 
 
-        if (judul_penelitian == "" || keterangan == "") {
+        if (judul_penelitian == "" || perihal == "") {
             toastr.error('Harap Isi Semua Kolom', 'Error Alert', {
                 timeOut: 5000
             });
@@ -317,9 +448,17 @@ foreach ($data_kategori as $val) {?>
             form_data.append('judul_penelitian', judul_penelitian);
             form_data.append('mulai_penelitian', mulai_penelitian);
             form_data.append('selesai_penelitian', selesai_penelitian);
-            form_data.append('keterangan', keterangan);
             form_data.append('file_gambar', file_gambar);
             form_data.append('id_kategori', kategori);
+            form_data.append('nama_pejabat', nama_pejabat);
+            form_data.append('no_surat', no_surat);
+            form_data.append('status_pemohon', status_pemohon);
+            form_data.append('no_wa', no_wa);
+            form_data.append('lokasi', lokasi);
+            form_data.append('alamat', alamat);
+            form_data.append('lama_kegiatan', lama_kegiatan);
+            form_data.append('jumlah_anggota', jumlah_anggota);
+            form_data.append('perihal', perihal);
 
             $.ajax({
                 dataType: 'json',
@@ -335,9 +474,17 @@ foreach ($data_kategori as $val) {?>
                         $("#addmembers").find("input[name='judul_penelitian']").val('');
                         $("#addmembers").find("input[name='mulai_penelitian']").val('');
                         $("#addmembers").find("input[name='selesai_penelitian']").val('');
-                        $("#addmembers").find("input[name='keterangan']").val('');
                         $("#addmembers").find("select[name='kategori']").val('');
                         $("#addmembers").find("input[name='file_gambar']").val('');
+                        $("#addmembers").find("input[name='nama_pejabat']").val('');
+                        $("#addmembers").find("input[name='no_surat']").val('');
+                        $("#addmembers").find("input[name='status_pemohon']").val('');
+                        $("#addmembers").find("input[name='no_wa']").val('');
+                        $("#addmembers").find("input[name='lokasi']").val('');
+                        $("#addmembers").find("input[name='alamat']").val('');
+                        $("#addmembers").find("input[name='lama_kegiatan']").val('');
+                        $("#addmembers").find("input[name='jumlah_anggota']").val('');
+                        $("#addmembers").find("input[name='perihal']").val('');
 
                         $(".modal").modal('hide');
                         location.reload();
@@ -369,13 +516,20 @@ foreach ($data_kategori as $val) {?>
                 $("#addmembers").find("input[name='id_edit']").val(data.data[0].id);
                 $("#addmembers").find("input[name='judul_penelitian']").val(data.data[0].judul_penelitian);
                 $("#addmembers").find("input[name='mulai_penelitian']").val(data.data[0].mulai_penelitian);
-                $("#addmembers").find("input[name='selesai_penelitian']").val(data.data[0]
-                    .selesai_penelitian);
+                $("#addmembers").find("input[name='selesai_penelitian']").val(data.data[0].selesai_penelitian);
+                $("#addmembers").find("input[name='nama_pejabat']").val(data.data[0].mulai_penelitian);
+                $("#addmembers").find("input[name='no_surat']").val(data.data[0].no_surat);
+                $("#addmembers").find("input[name='status_pemohon']").val(data.data[0].status_pemohon);
+                $("#addmembers").find("input[name='no_wa']").val(data.data[0].no_wa);
+                $("#addmembers").find("input[name='lokasi']").val(data.data[0].lokasi);
+                $("#addmembers").find("input[name='alamat']").val(data.data[0].alamat);
+                $("#addmembers").find("input[name='lama_kegiatan']").val(data.data[0].lama_kegiatan);
+                $("#addmembers").find("input[name='jumlah_anggota']").val(data.data[0].jumlah_anggota);
+                $("#addmembers").find("input[name='perihal']").val(data.data[0].perihal);
                 $("#addmembers").find("select[name='id_kategori']").val(data.data[0].id_kategori);
-                $("#addmembers").find("a[id='link_download']").attr("href", baseUrl + data.data[0]
-                    .upload_file);
+                $("#addmembers").find("a[id='link_download']").attr("href", baseUrl + data.data[0].upload_file);
                 $("#addmembers").find("a[id='link_download']").text('' + filename);
-                CKEDITOR.instances.keterangan.setData(data.data[0].keterangan);
+                $("#addmembers").find("input[name='perihal']").val(data.data[0].perihal);
                 $('#addmembers').modal('show');
             },
             error: function(data) {
