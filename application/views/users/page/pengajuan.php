@@ -92,6 +92,7 @@ foreach ($data_pengajuan as $val) {
                                                 <td style="width: 10%; vertical-align">
                                                     <?php echo '<button type="button" class="btn btn-info btn-animation waves-effect waves-light" title="Edit" onclick="update(' . "'" . $val->id . "'" . ')"><i class="las la-pen-fancy"></i></button> &nbsp;' . '<button type="button" class="btn btn-danger btn-animation waves-effect waves-light" title="Hapus" onclick="hapus(' . "'" . $val->id . "'" . ')"><i class="las la-trash"></i></button> &nbsp;'.$tombol; ?>
                                                 </td>
+                                                <a href="<?= site_url('Word/index')?>" class="btn btn-info btn-animation waves-effect waves-light" title="Download"><i class="las la-print"></i></a>
                                             </tr>
                                             <?php }?>
                                         </tbody>
