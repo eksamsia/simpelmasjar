@@ -81,7 +81,7 @@
 <!-- <script src="<?= base_url()?>ruangrapat-assets/assets/js/pages/dashboard-ecommerce.init.js"></script> -->
 
 <!-- App js -->
-<!-- <script src="<?= base_url()?>ruangrapat-assets/assets/js/app.js"></script> -->
+<script src="<?= base_url()?>ruangrapat-assets/assets/js/app.js"></script>
 
 </body>
 
