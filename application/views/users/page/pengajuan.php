@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">Pengajuan Izin</h4>
+                        <h4 class="mb-sm-0">Pengajuan Izin Penelitian</h4>
 
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
@@ -60,16 +60,16 @@
 $count = 0;
 foreach ($data_pengajuan as $val) {
     $count = $count + 1;
-    if($this->session->userdata('role')==1){
-        if($val->isApproved==0){
-            $tombol='<button type="button" class="btn btn-soft-success btn-animation waves-effect waves-light" title="Edit" onclick="update_approve(' . "'" . $val->id . "'" . ')"><i class="las la-check-double"></i></button> &nbsp;';
-        }else{
-            $tombol='<button type="button" class="btn btn-soft-danger btn-animation waves-effect waves-light" title="Edit" onclick="update_nonapprove(' . "'" . $val->id . "'" . ')"><i class="las la-times"></i></button> &nbsp;';
+    if ($this->session->userdata('role') == 1) {
+        if ($val->isApproved == 0) {
+            $tombol = '<button type="button" class="btn btn-soft-success btn-animation waves-effect waves-light" title="Edit" onclick="update_approve(' . "'" . $val->id . "'" . ')"><i class="las la-check-double"></i></button> &nbsp;';
+        } else {
+            $tombol = '<button type="button" class="btn btn-soft-danger btn-animation waves-effect waves-light" title="Edit" onclick="update_nonapprove(' . "'" . $val->id . "'" . ')"><i class="las la-times"></i></button> &nbsp;';
         }
     } else {
-        $tombol='';
+        $tombol = '';
     }
-    
+
     ?>
                                             <tr>
                                                 <td style="width: 5%; vertical-align"><?php echo $count; ?></td>
@@ -90,12 +90,14 @@ foreach ($data_pengajuan as $val) {
                                                     <?php echo '<button type="button" class="btn btn-warning btn-animation waves-effect waves-light" title="Foto" onclick="detail_foto(' . "'" . $val->id . "'" . ')"><i class="las la-photo-video"></i></button> &nbsp;' ?>
                                                 </td>
                                                 <td style="width: 10%; vertical-align">
-                                                    <?php echo '<button type="button" class="btn btn-info btn-animation waves-effect waves-light" title="Edit" onclick="update(' . "'" . $val->id . "'" . ')"><i class="las la-pen-fancy"></i></button> &nbsp;' . '<button type="button" class="btn btn-danger btn-animation waves-effect waves-light" title="Hapus" onclick="hapus(' . "'" . $val->id . "'" . ')"><i class="las la-trash"></i></button> &nbsp;'.$tombol; ?>
+                                                    <?php echo '<button type="button" class="btn btn-info btn-animation waves-effect waves-light" title="Edit" onclick="update(' . "'" . $val->id . "'" . ')"><i class="las la-pen-fancy"></i></button> &nbsp;' . '<button type="button" class="btn btn-danger btn-animation waves-effect waves-light" title="Hapus" onclick="hapus(' . "'" . $val->id . "'" . ')"><i class="las la-trash"></i></button> &nbsp;' . $tombol; ?>
                                                 </td>
                                                 <td style="width: 10%; vertical-align">
                                                     <?php echo '<button type="button" class="btn btn-success btn-animation waves-effect waves-light" title="Download" onclick="preview(' . "'" . $val->id . "'" . ')"><i class="las la-eye"></i></button> &nbsp;'; ?>
                                                 </td>
-                                                <a href="<?= site_url('Word/index')?>" class="btn btn-info btn-animation waves-effect waves-light" title="Download"><i class="las la-print"></i></a>
+                                                <a href="<?=site_url('Word/index')?>"
+                                                    class="btn btn-info btn-animation waves-effect waves-light"
+                                                    title="Download"><i class="las la-print"></i></a>
                                             </tr>
                                             <?php }?>
                                         </tbody>
@@ -138,7 +140,7 @@ foreach ($data_pengajuan as $val) {
                                     <select class="form-control" name="id_kategori" id="id_kategori" required>
                                         <option value="" selected disabled>Kategori</option>
                                         <?php
-                                            foreach ($data_kategori as $val) {?>
+foreach ($data_kategori as $val) {?>
                                         <option value="<?=$val->id;?>" ;?>
                                             <?=$val->kategori;?></option>;
                                         <?php }?>
@@ -159,27 +161,27 @@ foreach ($data_pengajuan as $val) {
                                 <div class="row">
                                     <div class="col-6">
                                         <div class="mb-3">
-                                        <label class="form-label">Nama Pejabat</label>
+                                            <label class="form-label">Nama Pejabat</label>
                                             <div class="input-group">
                                                 <!-- <input id="jam_mulai" name="jam_mulai" type="text"
                                                     class="form-control flatpickr flatpickr-input"
                                                     placeholder="Select start time" readonly>
                                                 <span class="input-group-text"><i class="ri-time-line"></i></span> -->
                                                 <input type="text" class="form-control" id="nama_pejabat"
-                                                name="nama_pejabat" placeholder="Nama Pejabat">
+                                                    name="nama_pejabat" placeholder="Nama Pejabat">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="mb-3">
-                                        <label class="form-label">No. Surat</label>
+                                            <label class="form-label">No. Surat</label>
                                             <div class="input-group">
                                                 <!-- <input id="jam_mulai" name="jam_mulai" type="text"
                                                     class="form-control flatpickr flatpickr-input"
                                                     placeholder="Select start time" readonly>
                                                 <span class="input-group-text"><i class="ri-time-line"></i></span> -->
-                                                <input type="text" class="form-control" id="no_surat"
-                                                name="no_surat" placeholder="Nomor Surat">
+                                                <input type="text" class="form-control" id="no_surat" name="no_surat"
+                                                    placeholder="Nomor Surat">
                                             </div>
                                         </div>
                                     </div>
@@ -191,27 +193,27 @@ foreach ($data_pengajuan as $val) {
                                 <div class="row">
                                     <div class="col-6">
                                         <div class="mb-3">
-                                        <label class="form-label">Status Pemohon</label>
+                                            <label class="form-label">Status Pemohon</label>
                                             <div class="input-group">
                                                 <!-- <input id="jam_mulai" name="jam_mulai" type="text"
                                                     class="form-control flatpickr flatpickr-input"
                                                     placeholder="Select start time" readonly>
                                                 <span class="input-group-text"><i class="ri-time-line"></i></span> -->
                                                 <input type="text" class="form-control" id="status_pemohon"
-                                                name="status_pemohon" placeholder="Status Pemohon">
+                                                    name="status_pemohon" placeholder="Status Pemohon">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="mb-3">
-                                        <label class="form-label">No. Whatsapp</label>
+                                            <label class="form-label">No. Whatsapp</label>
                                             <div class="input-group">
                                                 <!-- <input id="jam_mulai" name="jam_mulai" type="text"
                                                     class="form-control flatpickr flatpickr-input"
                                                     placeholder="Select start time" readonly>
                                                 <span class="input-group-text"><i class="ri-time-line"></i></span> -->
-                                                <input type="text" class="form-control" id="no_wa"
-                                                name="no_wa" placeholder="No. Whatsapp">
+                                                <input type="text" class="form-control" id="no_wa" name="no_wa"
+                                                    placeholder="No. Whatsapp">
                                             </div>
                                         </div>
                                     </div>
@@ -221,20 +223,20 @@ foreach ($data_pengajuan as $val) {
                             <div class="col-lg-12">
                                 <div class="mb-3">
                                     <label for="teammembersName" class="form-label">Lokasi Kegiatan</label>
-                                    <input type="text" class="form-control" id="lokasi"
-                                        name="lokasi" placeholder="Lokasi Kegiatan">
+                                    <input type="text" class="form-control" id="lokasi" name="lokasi"
+                                        placeholder="Lokasi Kegiatan">
                                 </div>
                             </div>
 
                             <div class="col-lg-12">
                                 <div class="mb-3">
                                     <label for="teammembersName" class="form-label">Alamat Pemohon</label>
-                                    <input type="text" class="form-control" id="alamat"
-                                        name="alamat" placeholder="Alamat Pemohon">
+                                    <input type="text" class="form-control" id="alamat" name="alamat"
+                                        placeholder="Alamat Pemohon">
                                 </div>
                             </div>
 
-                            
+
                             <!--
                             <div class="col-12">
                                 < +++++++++ TANGGAL RAPAT +++++++++++ -->
@@ -255,27 +257,27 @@ foreach ($data_pengajuan as $val) {
                                 <div class="row">
                                     <div class="col-6">
                                         <div class="mb-3">
-                                        <label class="form-label">Lama Kegiatan</label>
+                                            <label class="form-label">Lama Kegiatan</label>
                                             <div class="input-group">
                                                 <!-- <input id="jam_mulai" name="jam_mulai" type="text"
                                                     class="form-control flatpickr flatpickr-input"
                                                     placeholder="Select start time" readonly>
                                                 <span class="input-group-text"><i class="ri-time-line"></i></span> -->
                                                 <input type="text" class="form-control" id="lama_kegiatan"
-                                                name="lama_kegiatan" placeholder="Lama Kegiatan">
+                                                    name="lama_kegiatan" placeholder="Lama Kegiatan">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="mb-3">
-                                        <label class="form-label">Jumlah Anggota</label>
+                                            <label class="form-label">Jumlah Anggota</label>
                                             <div class="input-group">
                                                 <!-- <input id="jam_mulai" name="jam_mulai" type="text"
                                                     class="form-control flatpickr flatpickr-input"
                                                     placeholder="Select start time" readonly>
                                                 <span class="input-group-text"><i class="ri-time-line"></i></span> -->
                                                 <input type="text" class="form-control" id="jumlah_anggota"
-                                                name="jumlah_anggota" placeholder="Jumlah Anggota">
+                                                    name="jumlah_anggota" placeholder="Jumlah Anggota">
                                             </div>
                                         </div>
                                     </div>
@@ -318,8 +320,8 @@ foreach ($data_pengajuan as $val) {
                             <div class="col-lg-12">
                                 <div class="mb-3">
                                     <label for="teammembersName" class="form-label">Perihal Surat</label>
-                                    <input type="text" class="form-control" id="perihal"
-                                        name="perihal" placeholder="Perihal Surat">
+                                    <input type="text" class="form-control" id="perihal" name="perihal"
+                                        placeholder="Perihal Surat">
                                 </div>
                             </div>
 
@@ -554,7 +556,8 @@ foreach ($data_pengajuan as $val) {
                 $("#addmembers").find("input[name='id_edit']").val(data.data[0].id);
                 $("#addmembers").find("input[name='judul_penelitian']").val(data.data[0].judul_penelitian);
                 $("#addmembers").find("input[name='mulai_penelitian']").val(data.data[0].mulai_penelitian);
-                $("#addmembers").find("input[name='selesai_penelitian']").val(data.data[0].selesai_penelitian);
+                $("#addmembers").find("input[name='selesai_penelitian']").val(data.data[0]
+                    .selesai_penelitian);
                 $("#addmembers").find("input[name='nama_pejabat']").val(data.data[0].mulai_penelitian);
                 $("#addmembers").find("input[name='no_surat']").val(data.data[0].no_surat);
                 $("#addmembers").find("input[name='status_pemohon']").val(data.data[0].status_pemohon);
@@ -565,7 +568,8 @@ foreach ($data_pengajuan as $val) {
                 $("#addmembers").find("input[name='jumlah_anggota']").val(data.data[0].jumlah_anggota);
                 $("#addmembers").find("input[name='perihal']").val(data.data[0].perihal);
                 $("#addmembers").find("select[name='id_kategori']").val(data.data[0].id_kategori);
-                $("#addmembers").find("a[id='link_download']").attr("href", baseUrl + data.data[0].upload_file);
+                $("#addmembers").find("a[id='link_download']").attr("href", baseUrl + data.data[0]
+                    .upload_file);
                 $("#addmembers").find("a[id='link_download']").text('' + filename);
                 $("#addmembers").find("input[name='perihal']").val(data.data[0].perihal);
                 $('#addmembers').modal('show');
@@ -588,7 +592,8 @@ foreach ($data_pengajuan as $val) {
                 $("#download").find("input[name='id_edit']").val(data.data[0].id);
                 $("#download").find("input[name='judul_penelitian']").val(data.data[0].judul_penelitian);
                 $("#download").find("input[name='mulai_penelitian']").val(data.data[0].mulai_penelitian);
-                $("#download").find("input[name='selesai_penelitian']").val(data.data[0].selesai_penelitian);
+                $("#download").find("input[name='selesai_penelitian']").val(data.data[0]
+                .selesai_penelitian);
                 $("#download").find("input[name='nama_pejabat']").val(data.data[0].mulai_penelitian);
                 $("#download").find("input[name='no_surat']").val(data.data[0].no_surat);
                 $("#download").find("input[name='status_pemohon']").val(data.data[0].status_pemohon);
@@ -599,7 +604,8 @@ foreach ($data_pengajuan as $val) {
                 $("#download").find("input[name='jumlah_anggota']").val(data.data[0].jumlah_anggota);
                 $("#download").find("input[name='perihal']").val(data.data[0].perihal);
                 $("#download").find("select[name='id_kategori']").val(data.data[0].id_kategori);
-                $("#download").find("a[id='link_download']").attr("href", baseUrl + data.data[0].upload_file);
+                $("#download").find("a[id='link_download']").attr("href", baseUrl + data.data[0]
+                    .upload_file);
                 $("#download").find("a[id='link_download']").text('' + filename);
                 $("#download").find("input[name='perihal']").val(data.data[0].perihal);
                 $('#download').modal('show');
@@ -622,7 +628,8 @@ foreach ($data_pengajuan as $val) {
                 $("#previewdata").find("input[name='id_edit']").val(data.data[0].id);
                 $("#previewdata").find("input[name='judul_penelitian']").val(data.data[0].judul_penelitian);
                 $("#previewdata").find("input[name='mulai_penelitian']").val(data.data[0].mulai_penelitian);
-                $("#previewdata").find("input[name='selesai_penelitian']").val(data.data[0].selesai_penelitian);
+                $("#previewdata").find("input[name='selesai_penelitian']").val(data.data[0]
+                    .selesai_penelitian);
                 $("#previewdata").find("input[name='nama_pejabat']").val(data.data[0].mulai_penelitian);
                 $("#previewdata").find("input[name='no_surat']").val(data.data[0].no_surat);
                 $("#previewdata").find("input[name='status_pemohon']").val(data.data[0].status_pemohon);
@@ -633,7 +640,8 @@ foreach ($data_pengajuan as $val) {
                 $("#previewdata").find("input[name='jumlah_anggota']").val(data.data[0].jumlah_anggota);
                 $("#previewdata").find("input[name='perihal']").val(data.data[0].perihal);
                 $("#previewdata").find("select[name='id_kategori']").val(data.data[0].id_kategori);
-                $("#previewdata").find("a[id='link_download']").attr("href", baseUrl + data.data[0].upload_file);
+                $("#previewdata").find("a[id='link_download']").attr("href", baseUrl + data.data[0]
+                    .upload_file);
                 $("#previewdata").find("a[id='link_download']").text('' + filename);
                 $("#previewdata").find("input[name='perihal']").val(data.data[0].perihal);
                 $('#previewdata').modal('show');
@@ -733,7 +741,7 @@ foreach ($data_pengajuan as $val) {
         });
     }
 
-    function update_approve(id){
+    function update_approve(id) {
         console.log(id);
         $.ajax({
             dataType: 'json',
@@ -759,7 +767,7 @@ foreach ($data_pengajuan as $val) {
                             url: 'pengajuan/update_approve/' + id,
                             data: {
                                 id: id,
-                                isApproved:1
+                                isApproved: 1
                             },
                             success: function(response) {
                                 Swal.fire({
@@ -802,7 +810,7 @@ foreach ($data_pengajuan as $val) {
         });
     }
 
-    function update_nonapprove(id){
+    function update_nonapprove(id) {
         console.log(id);
         $.ajax({
             dataType: 'json',
@@ -828,7 +836,7 @@ foreach ($data_pengajuan as $val) {
                             url: 'pengajuan/update_approve/' + id,
                             data: {
                                 id: id,
-                                isApproved:0
+                                isApproved: 0
                             },
                             success: function(response) {
                                 Swal.fire({
