@@ -366,238 +366,27 @@ foreach ($data_pengajuan as $val) {
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0">
                 <div class="modal-header p-3 bg-soft-info">
-                    <h5 class="modal-title" id="myModalLabel">Form Pengajuan</h5>
+                    <h5 class="modal-title" id="myModalLabel">Detail Pengajuan</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-
-                    <form id="form_input">
-                        <div class="row">
-
-                            <div class="col-lg-12">
-                                <div class="mb-3">
-                                    <label for="teammembersName" class="form-label">Keperluan</label>
-                                    <input type="hidden" class="form-control" id="id_edit" name="id_edit">
-                                    <input type="hidden" class="form-control" id="indikator" name="indikator">
-                                    <select class="form-control" name="id_kategori" id="id_kategori" required>
-                                        <option value="" selected disabled>Kategori</option>
-                                        <?php
-                                            foreach ($data_kategori as $val) {?>
-                                        <option value="<?=$val->id;?>" ;?>
-                                            <?=$val->kategori;?></option>;
-                                        <?php }?>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-12">
-                                <div class="mb-3">
-                                    <label for="teammembersName" class="form-label">Judul Penelitian</label>
-                                    <input type="text" class="form-control" id="judul_penelitian"
-                                        name="judul_penelitian" placeholder="Judul Penelitian">
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <!-- ++++++++++ JAM RAPAT +++++++++++++++ -->
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="mb-3">
-                                        <label class="form-label">Nama Pejabat</label>
-                                            <div class="input-group">
-                                                <!-- <input id="jam_mulai" name="jam_mulai" type="text"
-                                                    class="form-control flatpickr flatpickr-input"
-                                                    placeholder="Select start time" readonly>
-                                                <span class="input-group-text"><i class="ri-time-line"></i></span> -->
-                                                <input type="text" class="form-control" id="nama_pejabat"
-                                                name="nama_pejabat" placeholder="Nama Pejabat">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="mb-3">
-                                        <label class="form-label">No. Surat</label>
-                                            <div class="input-group">
-                                                <!-- <input id="jam_mulai" name="jam_mulai" type="text"
-                                                    class="form-control flatpickr flatpickr-input"
-                                                    placeholder="Select start time" readonly>
-                                                <span class="input-group-text"><i class="ri-time-line"></i></span> -->
-                                                <input type="text" class="form-control" id="no_surat"
-                                                name="no_surat" placeholder="Nomor Surat">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <!-- ++++++++++ JAM RAPAT +++++++++++++++ -->
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="mb-3">
-                                        <label class="form-label">Status Pemohon</label>
-                                            <div class="input-group">
-                                                <!-- <input id="jam_mulai" name="jam_mulai" type="text"
-                                                    class="form-control flatpickr flatpickr-input"
-                                                    placeholder="Select start time" readonly>
-                                                <span class="input-group-text"><i class="ri-time-line"></i></span> -->
-                                                <input type="text" class="form-control" id="status_pemohon"
-                                                name="status_pemohon" placeholder="Status Pemohon">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="mb-3">
-                                        <label class="form-label">No. Whatsapp</label>
-                                            <div class="input-group">
-                                                <!-- <input id="jam_mulai" name="jam_mulai" type="text"
-                                                    class="form-control flatpickr flatpickr-input"
-                                                    placeholder="Select start time" readonly>
-                                                <span class="input-group-text"><i class="ri-time-line"></i></span> -->
-                                                <input type="text" class="form-control" id="no_wa"
-                                                name="no_wa" placeholder="No. Whatsapp">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-12">
-                                <div class="mb-3">
-                                    <label for="teammembersName" class="form-label">Lokasi Kegiatan</label>
-                                    <input type="text" class="form-control" id="lokasi"
-                                        name="lokasi" placeholder="Lokasi Kegiatan">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-12">
-                                <div class="mb-3">
-                                    <label for="teammembersName" class="form-label">Alamat Pemohon</label>
-                                    <input type="text" class="form-control" id="alamat"
-                                        name="alamat" placeholder="Alamat Pemohon">
-                                </div>
-                            </div>
-
-                            
-                            <!--
-                            <div class="col-12">
-                                < +++++++++ TANGGAL RAPAT +++++++++++ -->
-                            <!-- <div class="mb-3">
-                                    <label class="form-label">Lama Kegiatan</label>
-                                    <div class="input-group">
-                                        <input type="text" id="tanggal_rapat" name="tanggal_rapat"
-                                            class="form-control flatpickr flatpickr-input" placeholder="Select date"
-                                            readonly required>
-                                        <span class="input-group-text"><i class="ri-calendar-event-line"></i></span>
-                                    </div>
-                                </div>
-                            </div> -->
-                            <!-- end col -->
-
-                            <div class="col-12">
-                                <!-- ++++++++++ JAM RAPAT +++++++++++++++ -->
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="mb-3">
-                                        <label class="form-label">Lama Kegiatan</label>
-                                            <div class="input-group">
-                                                <!-- <input id="jam_mulai" name="jam_mulai" type="text"
-                                                    class="form-control flatpickr flatpickr-input"
-                                                    placeholder="Select start time" readonly>
-                                                <span class="input-group-text"><i class="ri-time-line"></i></span> -->
-                                                <input type="text" class="form-control" id="lama_kegiatan"
-                                                name="lama_kegiatan" placeholder="Lama Kegiatan">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="mb-3">
-                                        <label class="form-label">Jumlah Anggota</label>
-                                            <div class="input-group">
-                                                <!-- <input id="jam_mulai" name="jam_mulai" type="text"
-                                                    class="form-control flatpickr flatpickr-input"
-                                                    placeholder="Select start time" readonly>
-                                                <span class="input-group-text"><i class="ri-time-line"></i></span> -->
-                                                <input type="text" class="form-control" id="jumlah_anggota"
-                                                name="jumlah_anggota" placeholder="Jumlah Anggota">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12" id="event-time">
-                                <!-- ++++++++++ JAM RAPAT +++++++++++++++ -->
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="mb-3">
-                                            <label class="form-label">Mulai</label>
-                                            <div class="input-group">
-                                                <!-- <input id="jam_mulai" name="jam_mulai" type="text"
-                                                    class="form-control flatpickr flatpickr-input"
-                                                    placeholder="Select start time" readonly>
-                                                <span class="input-group-text"><i class="ri-time-line"></i></span> -->
-                                                <input type="date" id="mulai_penelitian" name="mulai_penelitian"
-                                                    class="form-control flatpickr flatpickr-input">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="mb-3">
-                                            <label class="form-label">Selesai</label>
-                                            <div class="input-group">
-                                                <!-- <input id="jam_selesai" name="jam_selesai" type="text"
-                                                    class="form-control flatpickr flatpickr-input"
-                                                    placeholder="Select end time" readonly>
-                                                <span class="input-group-text"><i class="ri-time-line"></i></span> -->
-                                                <input type="date" id="selesai_penelitian" name="selesai_penelitian"
-                                                    class="form-control flatpickr flatpickr-input">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--end col-->
-
-                            <div class="col-lg-12">
-                                <div class="mb-3">
-                                    <label for="teammembersName" class="form-label">Perihal Surat</label>
-                                    <input type="text" class="form-control" id="perihal"
-                                        name="perihal" placeholder="Perihal Surat">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-12">
-                                <div class="mb-3">
-                                    <label for="formFile" class="form-label">Upload Surat Pengantar</label>
-
-                                    <input class="form-control" type="file" id="file" name="file">
-                                    <div style="margin-top: 1rem;">
-                                        <a href="" id="link_download" target="_blank"
-                                            class="btn btn-warning btn-label waves-effect waves-light"><i
-                                                class=" ri-download-cloud-2-fill label-icon align-middle fs-16 me-2"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-12" id="progress" style="display:none">
-                                <div class="progress animated-progress">
-                                    <div class="progress-bar bg-info" role="progressbar" style="width: 50%"
-                                        aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"> Harap Tunggu</div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-12" id="tombol">
-                                <div class="hstack gap-2 justify-content-end">
-                                    <button type="button" class="btn btn-success" onclick="save_pengajuan()"><i
-                                            class="las la-save"></i> Simpan</button>
-                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i
-                                            class="las la-times"></i> Batal</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+                    <table style="width:70%">
+                        <tr>
+                            <th>Name</th>
+                            <td>:</td>
+                            <td>Bill Gates</td>
+                        </tr>
+                        <tr>
+                            <th>Telephone</th>
+                            <td>:</td>
+                            <td>555 77 854</td>
+                        </tr>
+                        <tr>
+                            <th>Telephone</th>
+                            <td>:</td>
+                            <td>555 77 855</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
             <!--end modal-content-->
