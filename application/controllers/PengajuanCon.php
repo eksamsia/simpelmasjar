@@ -15,7 +15,17 @@ class PengajuanCon extends DefaultController
     {
         $data['data_kategori'] = $this->get_kategori();
         $data['data_pengajuan'] = $this->get_pengajuan();
+        $data['data_dinas'] = $this->get_dinas();
+
         $this->load->view('users/page/pengajuan', $data);
+    }
+
+    private function get_dinas()
+    {
+        $this->load->database();
+        $this->db->select('*');
+        $this->db->order_by("id", "asc");
+        return $this->db->get('tb_dinas')->result();
     }
 
     private function get_kategori()
@@ -30,7 +40,7 @@ class PengajuanCon extends DefaultController
     {
         $this->load->database();
         $this->db->select('*');
-        if($this->session->userdata('role')!=1){
+        if ($this->session->userdata('role') != 1) {
             $this->db->where('id_user', $this->session->userdata('userid'));
         }
         $this->db->order_by("id", "asc");
@@ -269,55 +279,50 @@ class PengajuanCon extends DefaultController
         echo json_encode(array('status' => $status, 'msg' => $msg));
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         $this->load->database();
         $status = "";
         $msg = "";
 
         $where = array(
-        'id'  => $_POST['id']);
+            'id' => $_POST['id']);
 
-  
         $this->db->where('id', $id);
         $delete_rr = $this->db->delete('pengajuan');
 
-        if($delete_rr == true)
-        {
+        if ($delete_rr == true) {
             $status = "success";
             $msg = "Success Delete";
-        }
-        else
-        {
+        } else {
             $status = "error";
-            $msg = "Error Delete";  
+            $msg = "Error Delete";
         }
         echo json_encode(array('status' => $status, 'msg' => $msg));
     }
 
-    public function update_approve($id) {
+    public function update_approve($id)
+    {
         $this->load->database();
         $status = "";
         $msg = "";
 
         $where = array(
-        'id'  => $this->input->post('id'));
+            'id' => $this->input->post('id'));
 
         $data = array(
-            'isApproved' => $this->input->post("isApproved")
+            'isApproved' => $this->input->post("isApproved"),
         );
 
         $this->db->where($where);
         $doupload = $this->db->update('pengajuan', $data);
 
-        if($doupload == true)
-        {
+        if ($doupload == true) {
             $status = "success";
             $msg = "Success Approved";
-        }
-        else
-        {
+        } else {
             $status = "error";
-            $msg = "Error";  
+            $msg = "Error";
         }
         echo json_encode(array('status' => $status, 'msg' => $msg));
     }

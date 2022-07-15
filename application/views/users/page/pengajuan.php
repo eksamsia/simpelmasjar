@@ -367,34 +367,83 @@ foreach ($data_kategori as $val) {?>
     <div class="modal fade" id="download" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0">
-                <div class="modal-header p-3 bg-soft-info">
+                <div class="modal-header p- bg-soft-info">
                     <h5 class="modal-title" id="myModalLabel">Detail Pengajuan</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <table style="width:70%">
-                        <tr>
-                            <th>Name</th>
-                            <td>:</td>
-                            <td>Bill Gates</td>
-                        </tr>
-                        <tr>
-                            <th>Telephone</th>
-                            <td>:</td>
-                            <td>555 77 854</td>
-                        </tr>
-                        <tr>
-                            <th>Telephone</th>
-                            <td>:</td>
-                            <td>555 77 855</td>
-                        </tr>
-                    </table>
+                    <form id="form_input">
+                        <div class="row">
+
+                            <div class="col-lg-12">
+                                <div class="mb-3">
+                                    <label for="teammembersName" class="form-label">Disampaikan Kepada</label>
+                                    <input type="hidden" class="form-control" id="id_edit" name="id_edit">
+                                    <input type="hidden" class="form-control" id="indikator" name="indikator">
+                                    <select class="form-control" name="id_kategori" id="id_kategori" required>
+                                        <option value="" selected disabled>Pilihan Dinas</option>
+                                        <?php
+foreach ($data_dinas as $val) {?>
+                                        <option value="<?=$val->id;?>" ;?>
+                                            <?=$val->nama;?></option>;
+                                        <?php }?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <label for="teammembersName" class="form-label">Tembusan Disampaikan Kepada</label>
+                        <ol>
+                            <li>Bupati Nganjuk (Sebagai Laporan)</li>
+                            <li>Kepala Bappeda Kabupaten Nganjuk</li>
+                        </ol>
+                        <input type="hidden" class="form-control" id="id_edit" name="id_edit">
+                        <input type="hidden" class="form-control" id="indikator" name="indikator">
+                        <select class="form-control" name="id_kategori" id="id_kategori" required>
+                            <option value="" selected disabled>Pilihan Dinas</option>
+                            <?php
+foreach ($data_dinas as $val) {?>
+                            <option value="<?=$val->id;?>" ;?>
+                                <?=$val->nama;?></option>;
+                            <?php }?>
+                        </select><br>
+                        <select class="form-control" name="id_kategori" id="id_kategori" required>
+                            <option value="" selected disabled>Pilihan Dinas</option>
+                            <?php
+foreach ($data_dinas as $val) {?>
+                            <option value="<?=$val->id;?>" ;?>
+                                <?=$val->nama;?></option>;
+                            <?php }?>
+                        </select><br>
+                        <select class="form-control" name="id_kategori" id="id_kategori" required>
+                            <option value="" selected disabled>Pilihan Dinas</option>
+                            <?php
+foreach ($data_dinas as $val) {?>
+                            <option value="<?=$val->id;?>" ;?>
+                                <?=$val->nama;?></option>;
+                            <?php }?>
+                        </select><br>
+                        <select class="form-control" name="id_kategori" id="id_kategori" required>
+                            <option value="" selected disabled>Pilihan Dinas</option>
+                            <?php
+foreach ($data_dinas as $val) {?>
+                            <option value="<?=$val->id;?>" ;?>
+                                <?=$val->nama;?></option>;
+                            <?php }?>
+                        </select><br>
+                        <select class="form-control" name="id_kategori" id="id_kategori" required>
+                            <option value="" selected disabled>Pilihan Dinas</option>
+                            <?php
+foreach ($data_dinas as $val) {?>
+                            <option value="<?=$val->id;?>" ;?>
+                                <?=$val->nama;?></option>;
+                            <?php }?>
+                        </select>
                 </div>
             </div>
-            <!--end modal-content-->
         </div>
-        <!--end modal-dialog-->
+        </form>
     </div>
+    <!--end modal-content-->
 
     <!-- Gambar Modal -->
     <div class="modal fade" id="modal_gambar" tabindex="-1" aria-hidden="true">
@@ -554,8 +603,10 @@ foreach ($data_kategori as $val) {?>
 
                 $("#addmembers").find("input[name='indikator']").val(69);
                 $("#addmembers").find("input[name='id_edit']").val(data.data[0].id);
-                $("#addmembers").find("input[name='judul_penelitian']").val(data.data[0].judul_penelitian);
-                $("#addmembers").find("input[name='mulai_penelitian']").val(data.data[0].mulai_penelitian);
+                $("#addmembers").find("input[name='judul_penelitian']").val(data.data[0]
+                    .judul_penelitian);
+                $("#addmembers").find("input[name='mulai_penelitian']").val(data.data[0]
+                    .mulai_penelitian);
                 $("#addmembers").find("input[name='selesai_penelitian']").val(data.data[0]
                     .selesai_penelitian);
                 $("#addmembers").find("input[name='nama_pejabat']").val(data.data[0].mulai_penelitian);
@@ -590,10 +641,12 @@ foreach ($data_kategori as $val) {?>
 
                 $("#download").find("input[name='indikator']").val(69);
                 $("#download").find("input[name='id_edit']").val(data.data[0].id);
-                $("#download").find("input[name='judul_penelitian']").val(data.data[0].judul_penelitian);
-                $("#download").find("input[name='mulai_penelitian']").val(data.data[0].mulai_penelitian);
+                $("#download").find("input[name='judul_penelitian']").val(data.data[0]
+                    .judul_penelitian);
+                $("#download").find("input[name='mulai_penelitian']").val(data.data[0]
+                    .mulai_penelitian);
                 $("#download").find("input[name='selesai_penelitian']").val(data.data[0]
-                .selesai_penelitian);
+                    .selesai_penelitian);
                 $("#download").find("input[name='nama_pejabat']").val(data.data[0].mulai_penelitian);
                 $("#download").find("input[name='no_surat']").val(data.data[0].no_surat);
                 $("#download").find("input[name='status_pemohon']").val(data.data[0].status_pemohon);
@@ -626,8 +679,10 @@ foreach ($data_kategori as $val) {?>
 
                 $("#previewdata").find("input[name='indikator']").val(69);
                 $("#previewdata").find("input[name='id_edit']").val(data.data[0].id);
-                $("#previewdata").find("input[name='judul_penelitian']").val(data.data[0].judul_penelitian);
-                $("#previewdata").find("input[name='mulai_penelitian']").val(data.data[0].mulai_penelitian);
+                $("#previewdata").find("input[name='judul_penelitian']").val(data.data[0]
+                    .judul_penelitian);
+                $("#previewdata").find("input[name='mulai_penelitian']").val(data.data[0]
+                    .mulai_penelitian);
                 $("#previewdata").find("input[name='selesai_penelitian']").val(data.data[0]
                     .selesai_penelitian);
                 $("#previewdata").find("input[name='nama_pejabat']").val(data.data[0].mulai_penelitian);
