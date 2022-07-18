@@ -364,6 +364,8 @@ foreach ($data_kategori as $val) {?>
     </div>
     <!--end pengajuan izin-->
 
+    <!------------------------------------------DETAIL PENGAJUAN---------------------------------->
+
     <div class="modal fade" id="download" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0">
@@ -377,10 +379,14 @@ foreach ($data_kategori as $val) {?>
 
                             <div class="col-lg-12">
                                 <div class="mb-3">
-                                    <label for="teammembersName" class="form-label">Disampaikan Kepada</label>
+                                    <label for="teammembersName" class="form-label">Status: </label><span
+                                        id="status_pemohon"></span><br>
+                                    <label for="teammembersName" class="form-label">Judul Penelitian: </label><span
+                                        id="judul"></span><br>
+                                    <label for="teammembersName" class="form-label">Disampaikan Kepada : </label>
                                     <input type="hidden" class="form-control" id="id_edit" name="id_edit">
                                     <input type="hidden" class="form-control" id="indikator" name="indikator">
-                                    <select class="form-control" name="id_kategori" id="id_kategori" required>
+                                    <select class="form-control" name="id_dinas" id="id_dinas" required>
                                         <option value="" selected disabled>Pilihan Dinas</option>
                                         <?php
 foreach ($data_dinas as $val) {?>
@@ -398,7 +404,7 @@ foreach ($data_dinas as $val) {?>
                         </ol>
                         <input type="hidden" class="form-control" id="id_edit" name="id_edit">
                         <input type="hidden" class="form-control" id="indikator" name="indikator">
-                        <select class="form-control" name="id_kategori" id="id_kategori" required>
+                        <select class="form-control" name="id_dinas" id="id_dinas" required>
                             <option value="" selected disabled>Pilihan Dinas</option>
                             <?php
 foreach ($data_dinas as $val) {?>
@@ -406,7 +412,7 @@ foreach ($data_dinas as $val) {?>
                                 <?=$val->nama;?></option>;
                             <?php }?>
                         </select><br>
-                        <select class="form-control" name="id_kategori" id="id_kategori" required>
+                        <select class="form-control" name="id_dinas" id="id_dinas" required>
                             <option value="" selected disabled>Pilihan Dinas</option>
                             <?php
 foreach ($data_dinas as $val) {?>
@@ -414,7 +420,7 @@ foreach ($data_dinas as $val) {?>
                                 <?=$val->nama;?></option>;
                             <?php }?>
                         </select><br>
-                        <select class="form-control" name="id_kategori" id="id_kategori" required>
+                        <select class="form-control" name="id_dinas" id="id_dinas" required>
                             <option value="" selected disabled>Pilihan Dinas</option>
                             <?php
 foreach ($data_dinas as $val) {?>
@@ -422,7 +428,7 @@ foreach ($data_dinas as $val) {?>
                                 <?=$val->nama;?></option>;
                             <?php }?>
                         </select><br>
-                        <select class="form-control" name="id_kategori" id="id_kategori" required>
+                        <select class="form-control" name="id_dinas" id="id_dinas" required>
                             <option value="" selected disabled>Pilihan Dinas</option>
                             <?php
 foreach ($data_dinas as $val) {?>
@@ -430,7 +436,7 @@ foreach ($data_dinas as $val) {?>
                                 <?=$val->nama;?></option>;
                             <?php }?>
                         </select><br>
-                        <select class="form-control" name="id_kategori" id="id_kategori" required>
+                        <select class="form-control" name="id_dinas" id="id_dinas" required>
                             <option value="" selected disabled>Pilihan Dinas</option>
                             <?php
 foreach ($data_dinas as $val) {?>
@@ -636,20 +642,23 @@ foreach ($data_dinas as $val) {?>
             dataType: 'json',
             url: 'pengajuan/ambil-data-by-id/' + id,
             success: function(data) {
-                console.log(data);
+                console.log(data.data[0]
+                    .judul_penelitian);
                 var filename = data.data[0].upload_file.split('/').pop();
 
                 $("#download").find("input[name='indikator']").val(69);
                 $("#download").find("input[name='id_edit']").val(data.data[0].id);
-                $("#download").find("input[name='judul_penelitian']").val(data.data[0]
+                $("#download").find("span[id='judul']").text(' ' + data.data[0]
                     .judul_penelitian);
+                // $("#download").find("span[id='userid']").text(' ' + data.data[0]
+                //     .nama);
                 $("#download").find("input[name='mulai_penelitian']").val(data.data[0]
                     .mulai_penelitian);
                 $("#download").find("input[name='selesai_penelitian']").val(data.data[0]
                     .selesai_penelitian);
                 $("#download").find("input[name='nama_pejabat']").val(data.data[0].mulai_penelitian);
                 $("#download").find("input[name='no_surat']").val(data.data[0].no_surat);
-                $("#download").find("input[name='status_pemohon']").val(data.data[0].status_pemohon);
+                $("#download").find("span[id='status_pemohon']").text(' ' + data.data[0].status_pemohon);
                 $("#download").find("input[name='no_wa']").val(data.data[0].no_wa);
                 $("#download").find("input[name='lokasi']").val(data.data[0].lokasi);
                 $("#download").find("input[name='alamat']").val(data.data[0].alamat);
