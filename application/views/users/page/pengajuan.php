@@ -379,10 +379,54 @@ foreach ($data_kategori as $val) {?>
 
                             <div class="col-lg-12">
                                 <div class="mb-3">
-                                    <label for="teammembersName" class="form-label">Status: </label><span
+                                    <table style="width:100%">
+                                        <tr>
+                                            <th>Status Pemohon</th>
+                                            <th>Judul Penelitian</th>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="teammembersName" class="form-label"></label><span
+                                                id="status_pemohon"></span></td>
+                                            <td><label for="teammembersName" class="form-label"></label><span
+                                                id="judul"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Mulai Penalitian</th>
+                                            <th>Selesai Penelitian</th>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="teammembersName" class="form-label"></label><span
+                                                id="mulai_penelitian"></span></td>
+                                            <td><label for="teammembersName" class="form-label"></label><span
+                                                id="selesai_penelitian"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Pejabat</th>
+                                            <th>No. Surat</th>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="teammembersName" class="form-label"></label><span
+                                                id="nama_pejabat"></span></td>
+                                            <td><label for="teammembersName" class="form-label"></label><span
+                                                id="no_surat"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Lokasi</th>
+                                            <th>No. Surat</th>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="teammembersName" class="form-label"></label><span
+                                                id="nama_pejabat"></span></td>
+                                            <td><label for="teammembersName" class="form-label"></label><span
+                                                id="no_surat"></span></td>
+                                        </tr>
+                                    </table>
+                                    <br>
+                                    <br>
+                                    <!-- <label for="teammembersName" class="form-label">Status: </label><span
                                         id="status_pemohon"></span><br>
                                     <label for="teammembersName" class="form-label">Judul Penelitian: </label><span
-                                        id="judul"></span><br>
+                                        id="judul"></span><br> -->
                                     <label for="teammembersName" class="form-label">Disampaikan Kepada : </label>
                                     <input type="hidden" class="form-control" id="id_edit" name="id_edit">
                                     <input type="hidden" class="form-control" id="indikator" name="indikator">
@@ -648,19 +692,19 @@ foreach ($data_dinas as $val) {?>
 
                 $("#download").find("input[name='indikator']").val(69);
                 $("#download").find("input[name='id_edit']").val(data.data[0].id);
-                $("#download").find("span[id='judul']").text(' ' + data.data[0]
+                $("#download").find("span[id='judul']").text(data.data[0]
                     .judul_penelitian);
                 // $("#download").find("span[id='userid']").text(' ' + data.data[0]
                 //     .nama);
-                $("#download").find("input[name='mulai_penelitian']").val(data.data[0]
+                $("#download").find("span[id='mulai_penelitian']").text(data.data[0]
                     .mulai_penelitian);
-                $("#download").find("input[name='selesai_penelitian']").val(data.data[0]
+                $("#download").find("span[id='selesai_penelitian']").text(data.data[0]
                     .selesai_penelitian);
-                $("#download").find("input[name='nama_pejabat']").val(data.data[0].mulai_penelitian);
-                $("#download").find("input[name='no_surat']").val(data.data[0].no_surat);
-                $("#download").find("span[id='status_pemohon']").text(' ' + data.data[0].status_pemohon);
-                $("#download").find("input[name='no_wa']").val(data.data[0].no_wa);
-                $("#download").find("input[name='lokasi']").val(data.data[0].lokasi);
+                $("#download").find("span[id='nama_pejabat']").text(data.data[0].mulai_penelitian);
+                $("#download").find("span[id='no_surat']").text(data.data[0].no_surat);
+                $("#download").find("span[id='status_pemohon']").text(data.data[0].status_pemohon);
+                $("#download").find("span[id='no_wa']").text(data.data[0].no_wa);
+                $("#download").find("span[id='lokasi']").text(data.data[0].lokasi);
                 $("#download").find("input[name='alamat']").val(data.data[0].alamat);
                 $("#download").find("input[name='lama_kegiatan']").val(data.data[0].lama_kegiatan);
                 $("#download").find("input[name='jumlah_anggota']").val(data.data[0].jumlah_anggota);
