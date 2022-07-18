@@ -95,9 +95,6 @@ foreach ($data_pengajuan as $val) {
                                                 <td style="width: 10%; vertical-align">
                                                     <?php echo '<button type="button" class="btn btn-success btn-animation waves-effect waves-light" title="Download" onclick="preview(' . "'" . $val->id . "'" . ')"><i class="las la-eye"></i></button> &nbsp;'; ?>
                                                 </td>
-                                                <a href="<?=site_url('Word/index')?>"
-                                                    class="btn btn-info btn-animation waves-effect waves-light"
-                                                    title="Download"><i class="las la-print"></i></a>
                                             </tr>
                                             <?php }?>
                                         </tbody>
@@ -386,9 +383,9 @@ foreach ($data_kategori as $val) {?>
                                         </tr>
                                         <tr>
                                             <td><label for="teammembersName" class="form-label"></label><span
-                                                id="status_pemohon"></span></td>
+                                                    id="status_pemohon"></span></td>
                                             <td><label for="teammembersName" class="form-label"></label><span
-                                                id="judul"></span></td>
+                                                    id="judul"></span></td>
                                         </tr>
                                         <tr>
                                             <th>Mulai Penalitian</th>
@@ -396,9 +393,9 @@ foreach ($data_kategori as $val) {?>
                                         </tr>
                                         <tr>
                                             <td><label for="teammembersName" class="form-label"></label><span
-                                                id="mulai_penelitian"></span></td>
+                                                    id="mulai_penelitian"></span></td>
                                             <td><label for="teammembersName" class="form-label"></label><span
-                                                id="selesai_penelitian"></span></td>
+                                                    id="selesai_penelitian"></span></td>
                                         </tr>
                                         <tr>
                                             <th>Pejabat</th>
@@ -406,19 +403,29 @@ foreach ($data_kategori as $val) {?>
                                         </tr>
                                         <tr>
                                             <td><label for="teammembersName" class="form-label"></label><span
-                                                id="nama_pejabat"></span></td>
+                                                    id="nama_pejabat"></span></td>
                                             <td><label for="teammembersName" class="form-label"></label><span
-                                                id="no_surat"></span></td>
+                                                    id="no_surat"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Alamat</th>
+                                            <th>No. Whatsapp</th>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="teammembersName" class="form-label"></label><span
+                                                    id="alamat"></span></td>
+                                            <td><label for="teammembersName" class="form-label"></label><span
+                                                    id="no_wa"></span></td>
                                         </tr>
                                         <tr>
                                             <th>Lokasi</th>
-                                            <th>No. Surat</th>
+                                            <th>Lama Kegiatan</th>
                                         </tr>
                                         <tr>
                                             <td><label for="teammembersName" class="form-label"></label><span
-                                                id="nama_pejabat"></span></td>
+                                                    id="lokasi_kegiatan"></span></td>
                                             <td><label for="teammembersName" class="form-label"></label><span
-                                                id="no_surat"></span></td>
+                                                    id="lama_kegiatan"></span></td>
                                         </tr>
                                     </table>
                                     <br>
@@ -488,10 +495,23 @@ foreach ($data_dinas as $val) {?>
                                 <?=$val->nama;?></option>;
                             <?php }?>
                         </select>
+
+                        <!-- <div style="margin-top: 1rem;">
+                            <a href="" id="link_download" target="_blank"
+                                class="btn btn-warning btn-label waves-effect waves-light"><i
+                                    class=" ri-download-cloud-2-fill label-icon align-middle fs-16 me-2"></i>
+                            </a>
+                        </div> -->
+                        <br>
+                        <a href="<?=site_url('Word/index')?>"
+                            class="btn btn-info btn-animation waves-effect waves-light" title="Download"><i
+                                class="las la-print"></i></a>
                 </div>
+
             </div>
         </div>
         </form>
+
     </div>
     <!--end modal-content-->
 
@@ -704,10 +724,10 @@ foreach ($data_dinas as $val) {?>
                 $("#download").find("span[id='no_surat']").text(data.data[0].no_surat);
                 $("#download").find("span[id='status_pemohon']").text(data.data[0].status_pemohon);
                 $("#download").find("span[id='no_wa']").text(data.data[0].no_wa);
-                $("#download").find("span[id='lokasi']").text(data.data[0].lokasi);
-                $("#download").find("input[name='alamat']").val(data.data[0].alamat);
-                $("#download").find("input[name='lama_kegiatan']").val(data.data[0].lama_kegiatan);
-                $("#download").find("input[name='jumlah_anggota']").val(data.data[0].jumlah_anggota);
+                $("#download").find("span[id='lokasi_kegiatan']").text(data.data[0].lokasi);
+                $("#download").find("span[id='alamat']").text(data.data[0].alamat);
+                $("#download").find("span[id='lama_kegiatan']").text(data.data[0].lama_kegiatan);
+                $("#download").find("span[id='jumlah_anggota']").text(data.data[0].jumlah_anggota);
                 $("#download").find("input[name='perihal']").val(data.data[0].perihal);
                 $("#download").find("select[name='id_kategori']").val(data.data[0].id_kategori);
                 $("#download").find("a[id='link_download']").attr("href", baseUrl + data.data[0]
