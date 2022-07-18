@@ -364,7 +364,7 @@ foreach ($data_kategori as $val) {?>
     <!------------------------------------------DETAIL PENGAJUAN---------------------------------->
 
     <div class="modal fade" id="download" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content border-0">
                 <div class="modal-header p- bg-soft-info">
                     <h5 class="modal-title" id="myModalLabel">Detail Pengajuan</h5>
@@ -377,6 +377,17 @@ foreach ($data_kategori as $val) {?>
                             <div class="col-lg-12">
                                 <div class="mb-3">
                                     <table style="width:100%">
+                                        <tr>
+                                            <th>Nama Pemohon</th>
+                                            <th>Perihal</th>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="teammembersName" class="form-label"></label><span
+                                                    id="judul"></span></td>
+                                            <td><label for="teammembersName" class="form-label"></label><span
+                                                    id="perihal"></span></td>
+                                        </tr>
+                                        <tr>
                                         <tr>
                                             <th>Status Pemohon</th>
                                             <th>Judul Penelitian</th>
@@ -718,6 +729,8 @@ foreach ($data_dinas as $val) {?>
                 //     .nama);
                 $("#download").find("span[id='mulai_penelitian']").text(data.data[0]
                     .mulai_penelitian);
+                $("#download").find("span[id='id_user']").text(data.data[0]
+                    .id_user);
                 $("#download").find("span[id='selesai_penelitian']").text(data.data[0]
                     .selesai_penelitian);
                 $("#download").find("span[id='nama_pejabat']").text(data.data[0].mulai_penelitian);
@@ -728,7 +741,7 @@ foreach ($data_dinas as $val) {?>
                 $("#download").find("span[id='alamat']").text(data.data[0].alamat);
                 $("#download").find("span[id='lama_kegiatan']").text(data.data[0].lama_kegiatan);
                 $("#download").find("span[id='jumlah_anggota']").text(data.data[0].jumlah_anggota);
-                $("#download").find("input[name='perihal']").val(data.data[0].perihal);
+                $("#download").find("span[id='perihal']").text(data.data[0].perihal);
                 $("#download").find("select[name='id_kategori']").val(data.data[0].id_kategori);
                 $("#download").find("a[id='link_download']").attr("href", baseUrl + data.data[0]
                     .upload_file);
