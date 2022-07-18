@@ -514,6 +514,14 @@ foreach ($data_dinas as $val) {?>
                             </a>
                         </div> -->
                         <br>
+                        <div class="col-lg-12" id="tombol">
+                                <div class="hstack gap-2 justify-content-end">
+                                    <button type="button" class="btn btn-success" onclick="save_pengajuan()"><i
+                                            class="las la-save"></i> Simpan</button>
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i
+                                            class="las la-times"></i> Batal</button>
+                                </div>
+                        </div>
                         <a href="<?=site_url('Word/index')?>"
                             class="btn btn-info btn-animation waves-effect waves-light" title="Download"><i
                                 class="las la-print"></i></a>
