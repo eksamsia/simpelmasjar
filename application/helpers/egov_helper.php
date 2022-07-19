@@ -192,9 +192,9 @@ function help_approve($isApproved){
     $query=$CI->db->get('approve')->row();
 
     if($query){
-        return $query->nama;
+        return $query->keterangan;
     } else {
-        return "Nama Tidak Ditemukan";
+        return "Keterangan Tidak Ditemukan";
     }
     
 }

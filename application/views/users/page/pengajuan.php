@@ -84,7 +84,7 @@ foreach ($data_pengajuan as $val) {
                                                 <td style="width: 20%; vertical-align">
                                                     <?php echo $val->judul_penelitian; ?>
                                                 <td style="width: 20%; vertical-align">
-                                                    <?php echo $val->perihal; ?>
+                                                    <?php echo help_approve($val->isApproved); ?>
                                                 </td>
                                                 <td style="width: 20%; vertical-align">
                                                     <?php echo '<button type="button" class="btn btn-warning btn-animation waves-effect waves-light" title="Foto" onclick="detail_foto(' . "'" . $val->id . "'" . ')"><i class="las la-photo-video"></i></button> &nbsp;' ?>
@@ -376,7 +376,7 @@ foreach ($data_kategori as $val) {?>
 
                             <div class="col-lg-12">
                                 <div class="mb-3">
-                                    <table style="width:100%, background-color:#FFFFE0;">
+                                    <table style="width:100%">
                                         <tr>
                                             <th>Nama Pemohon</th>
                                             <th>Perihal</th>
