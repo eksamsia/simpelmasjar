@@ -327,4 +327,33 @@ class PengajuanCon extends DefaultController
         echo json_encode(array('status' => $status, 'msg' => $msg));
     }
 
+    public function getByIdNgeprint($id)
+    {
+        $this->load->database();
+        $this->db->select('*');
+        $this->db->from('pengajuan');
+        $this->db->where('id', $id);
+        $q = $this->db->get()->row();
+
+        $data['id'] = $q->id;
+        $data['judul_penelitian'] = $q->judul_penelitian;
+        $data['mulai_penelitian'] = $q->mulai_penelitian;
+        $data['selesai_penelitian'] = $q->selesai_penelitian;
+        $data['upload_file'] = $q->upload_file;
+        $data['id_kategori'] = help_nama_kategori($q->id_kategori);
+        $data['id_user'] = help_nama_user($q->id_user);
+        $data['nama_pejabat'] = $q->nama_pejabat;
+        $data['no_surat'] = $q->no_surat;
+        $data['status_pemohon'] = $q->status_pemohon;
+        $data['no_wa'] = $q->no_wa;
+        $data['lokasi'] = $q->lokasi;
+        $data['alamat'] = $q->alamat;
+        $data['lama_kegiatan'] = $q->lama_kegiatan;
+        $data['jumlah_anggota'] = $q->jumlah_anggota;
+        $data['perihal'] = $q->perihal;
+        $data['isApproved'] = $q->isApproved;
+
+        echo json_encode($data);
+    }
+
 }

@@ -185,4 +185,18 @@ function help_nama_user($id_user){
     
 }
 
+function help_approve($isApproved){
+    $CI =  &get_instance();
+    $CI->db->select('*');
+    $CI->db->where('id', $isApproved); 
+    $query=$CI->db->get('approve')->row();
+
+    if($query){
+        return $query->nama;
+    } else {
+        return "Nama Tidak Ditemukan";
+    }
+    
+}
+
 ?>

@@ -78,7 +78,7 @@ foreach ($data_pengajuan as $val) {
                                                 <td style="width: 20%; vertical-align">
                                                     <?php echo help_nama_kategori($val->id_kategori); ?></td>
                                                 <td style="width: 20%; vertical-align">
-                                                    <?php echo $val->no_surat; ?></td>
+                                                    <?php echo $val->mulai_penelitian; ?></td>
                                                 <td style="width: 20%; vertical-align">
                                                     <?php echo $val->selesai_penelitian; ?></td>
                                                 <td style="width: 20%; vertical-align">
@@ -376,16 +376,16 @@ foreach ($data_kategori as $val) {?>
 
                             <div class="col-lg-12">
                                 <div class="mb-3">
-                                    <table style="width:100%">
+                                    <table style="width:100%, background-color:#FFFFE0;">
                                         <tr>
                                             <th>Nama Pemohon</th>
                                             <th>Perihal</th>
                                         </tr>
                                         <tr>
                                             <td><label for="teammembersName" class="form-label"></label><span
-                                                    id="judul"></span></td>
+                                                    id="id_user"></span></td>
                                             <td><label for="teammembersName" class="form-label"></label><span
-                                                    id="perihal"></span></td>
+                                                    id="id_kategori"></span></td>
                                         </tr>
                                         <tr>
                                         <tr>
@@ -523,7 +523,7 @@ foreach ($data_dinas as $val) {?>
                                 </div>
                         </div>
                         <a href="<?=site_url('Word/index')?>"
-                            class="btn btn-info btn-animation waves-effect waves-light" title="Download"><i
+                            class="btn btn-success" title="Download"><i
                                 class="las la-print"></i></a>
                 </div>
 
@@ -723,38 +723,29 @@ foreach ($data_dinas as $val) {?>
     function preview(id) {
         $.ajax({
             dataType: 'json',
-            url: 'pengajuan/ambil-data-by-id/' + id,
+            url: 'pengajuan/ambil-data-by-id-print/' + id,
             success: function(data) {
-                console.log(data.data[0]
-                    .judul_penelitian);
-                var filename = data.data[0].upload_file.split('/').pop();
+               
+                var filename = data.upload_file.split('/').pop();
 
                 $("#download").find("input[name='indikator']").val(69);
-                $("#download").find("input[name='id_edit']").val(data.data[0].id);
-                $("#download").find("span[id='judul']").text(data.data[0]
-                    .judul_penelitian);
-                // $("#download").find("span[id='userid']").text(' ' + data.data[0]
-                //     .nama);
-                $("#download").find("span[id='mulai_penelitian']").text(data.data[0]
-                    .mulai_penelitian);
-                $("#download").find("span[id='id_user']").text(data.data[0]
-                    .id_user);
-                $("#download").find("span[id='selesai_penelitian']").text(data.data[0]
-                    .selesai_penelitian);
-                $("#download").find("span[id='nama_pejabat']").text(data.data[0].mulai_penelitian);
-                $("#download").find("span[id='no_surat']").text(data.data[0].no_surat);
-                $("#download").find("span[id='status_pemohon']").text(data.data[0].status_pemohon);
-                $("#download").find("span[id='no_wa']").text(data.data[0].no_wa);
-                $("#download").find("span[id='lokasi_kegiatan']").text(data.data[0].lokasi);
-                $("#download").find("span[id='alamat']").text(data.data[0].alamat);
-                $("#download").find("span[id='lama_kegiatan']").text(data.data[0].lama_kegiatan);
-                $("#download").find("span[id='jumlah_anggota']").text(data.data[0].jumlah_anggota);
-                $("#download").find("span[id='perihal']").text(data.data[0].perihal);
-                $("#download").find("select[name='id_kategori']").val(data.data[0].id_kategori);
-                $("#download").find("a[id='link_download']").attr("href", baseUrl + data.data[0]
-                    .upload_file);
+                $("#download").find("span[id='judul']").text(data.judul_penelitian);
+                $("#download").find("span[id='mulai_penelitian']").text(data.mulai_penelitian);
+                $("#download").find("span[id='id_user']").text(data.id_user);
+                $("#download").find("span[id='selesai_penelitian']").text(data.selesai_penelitian);
+                $("#download").find("span[id='nama_pejabat']").text(data.mulai_penelitian);
+                $("#download").find("span[id='no_surat']").text(data.no_surat);
+                $("#download").find("span[id='status_pemohon']").text(data.status_pemohon);
+                $("#download").find("span[id='no_wa']").text(data.no_wa);
+                $("#download").find("span[id='lokasi_kegiatan']").text(data.lokasi);
+                $("#download").find("span[id='alamat']").text(data.alamat);
+                $("#download").find("span[id='lama_kegiatan']").text(data.lama_kegiatan);
+                $("#download").find("span[id='jumlah_anggota']").text(data.jumlah_anggota);
+                $("#download").find("span[id='perihal']").text(data.perihal);
+                $("#download").find("span[id='id_kategori']").text(data.id_kategori);
+                $("#download").find("a[id='link_download']").attr("href", baseUrl + data.upload_file);
                 $("#download").find("a[id='link_download']").text('' + filename);
-                $("#download").find("input[name='perihal']").val(data.data[0].perihal);
+                $("#download").find("input[name='perihal']").val(data.perihal);
                 $('#download').modal('show');
             },
             error: function(data) {
