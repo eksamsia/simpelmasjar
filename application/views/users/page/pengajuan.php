@@ -515,16 +515,16 @@ foreach ($data_dinas as $val) {?>
                         </div> -->
                         <br>
                         <div class="col-lg-12" id="tombol">
-                                <div class="hstack gap-2 justify-content-end">
-                                    <button type="button" class="btn btn-success" onclick="save_pengajuan()"><i
-                                            class="las la-save"></i> Simpan</button>
-                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i
-                                            class="las la-times"></i> Batal</button>
-                                </div>
+                            <div class="hstack gap-2 justify-content-end">
+                                <!-- <button type="button" class="btn btn-success" onclick="save_pengajuan()"><i
+                                        class="las la-save"></i> Simpan</button> -->
+                                <a href="<?=site_url('Word/index')?>" class="btn btn-success" title="Download"><i
+                                        class="las la-print"></i> Download</a>
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i
+                                        class="las la-times"></i> Batal</button>
+                            </div>
                         </div>
-                        <a href="<?=site_url('Word/index')?>"
-                            class="btn btn-success" title="Download"><i
-                                class="las la-print"></i></a>
+
                 </div>
 
             </div>
@@ -725,7 +725,7 @@ foreach ($data_dinas as $val) {?>
             dataType: 'json',
             url: 'pengajuan/ambil-data-by-id-print/' + id,
             success: function(data) {
-               
+
                 var filename = data.upload_file.split('/').pop();
 
                 $("#download").find("input[name='indikator']").val(69);
