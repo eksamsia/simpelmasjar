@@ -754,44 +754,6 @@ foreach ($data_dinas as $val) {?>
         });
     }
 
-    function update_preview(id) {
-        $.ajax({
-            dataType: 'json',
-            url: 'pengajuan/ambil-data-by-id/' + id,
-            success: function(data) {
-                console.log(data);
-                var filename = data.data[0].upload_file.split('/').pop();
-
-                $("#previewdata").find("input[name='indikator']").val(69);
-                $("#previewdata").find("input[name='id_edit']").val(data.data[0].id);
-                $("#previewdata").find("input[name='judul_penelitian']").val(data.data[0]
-                    .judul_penelitian);
-                $("#previewdata").find("input[name='mulai_penelitian']").val(data.data[0]
-                    .mulai_penelitian);
-                $("#previewdata").find("input[name='selesai_penelitian']").val(data.data[0]
-                    .selesai_penelitian);
-                $("#previewdata").find("input[name='nama_pejabat']").val(data.data[0].mulai_penelitian);
-                $("#previewdata").find("input[name='no_surat']").val(data.data[0].no_surat);
-                $("#previewdata").find("input[name='status_pemohon']").val(data.data[0].status_pemohon);
-                $("#previewdata").find("input[name='no_wa']").val(data.data[0].no_wa);
-                $("#previewdata").find("input[name='lokasi']").val(data.data[0].lokasi);
-                $("#previewdata").find("input[name='alamat']").val(data.data[0].alamat);
-                $("#previewdata").find("input[name='lama_kegiatan']").val(data.data[0].lama_kegiatan);
-                $("#previewdata").find("input[name='jumlah_anggota']").val(data.data[0].jumlah_anggota);
-                $("#previewdata").find("input[name='perihal']").val(data.data[0].perihal);
-                $("#previewdata").find("select[name='id_kategori']").val(data.data[0].id_kategori);
-                $("#previewdata").find("a[id='link_download']").attr("href", baseUrl + data.data[0]
-                    .upload_file);
-                $("#previewdata").find("a[id='link_download']").text('' + filename);
-                $("#previewdata").find("input[name='perihal']").val(data.data[0].perihal);
-                $('#previewdata').modal('show');
-            },
-            error: function(data) {
-                console.log('error');
-            }
-        });
-    }
-
 
 
     function hapus(id) {
