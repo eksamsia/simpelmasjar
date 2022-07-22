@@ -701,12 +701,12 @@ foreach ($data_dinas as $val) {?>
     function download_surat() {
 
         var id_download = $("#download").find("input[id='id_download']").val();
-        var id_dinas1 = $("#download").find("select[id='id_dinas1']").val();
-        var id_dinas2 = $("#download").find("select[id='id_dinas2']").val();
-        var id_dinas3 = $("#download").find("select[id='id_dinas3']").val();
-        var id_dinas4 = $("#download").find("select[id='id_dinas4']").val();
-        var id_dinas5 = $("#download").find("select[id='id_dinas5']").val();
-        var id_dinas6 = $("#download").find("select[id='id_dinas6']").val();
+        var id_dinas1 = $("#download").find("select[id='id_dinas1']").text();
+        var id_dinas2 = $("#download").find("select[id='id_dinas2']").text();
+        var id_dinas3 = $("#download").find("select[id='id_dinas3']").text();
+        var id_dinas4 = $("#download").find("select[id='id_dinas4']").text();
+        var id_dinas5 = $("#download").find("select[id='id_dinas5']").text();
+        var id_dinas6 = $("#download").find("select[id='id_dinas6']").text();
 
         var form_data = new FormData();
         form_data.append('id_download', id_download);

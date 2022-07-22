@@ -23,11 +23,12 @@ class Word extends CI_Controller
         $template->setValue('lama_kegiatan', $get_data->lama_kegiatan);
         $template->setValue('jumlah_anggota', $get_data->jumlah_anggota);
 
-        // $template->setValue('id_dinas2', $get_data->id_dinas2);
-        // $template->setValue('id_dinas3', $get_data->id_dinas3);
-        // $template->setValue('id_dinas4', $get_data->id_dinas4);
-        // $template->setValue('id_dinas5', $get_data->id_dinas5);
-        // $template->setValue('id_dinas6', $get_data->id_dinas6);
+        $template->setValue('id_dinas1', $this->input->post('id_dinas1'));
+        $template->setValue('id_dinas2', $this->input->post('id_dinas2'));
+        $template->setValue('id_dinas3', $this->input->post('id_dinas3'));
+        $template->setValue('id_dinas4', $this->input->post('id_dinas4'));
+        $template->setValue('id_dinas5', $this->input->post('id_dinas5'));
+        $template->setValue('id_dinas6', $this->input->post('id_dinas6'));
 
         $temp_filename = 'surat-kerja-praktek.docx';
         $template->saveAs($temp_filename);
