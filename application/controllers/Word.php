@@ -9,6 +9,7 @@ class Word extends CI_Controller
     public function print_pengajuan()
     {
         $get_data = $this->ambil_data($this->input->post('id_download'));
+        $get_namadinas = $this->get_dinas($this->input->post('id_download'));
 
         $phpWord = new \PhpOffice\PhpWord\PhpWord();
         $template = $phpWord->loadTemplate('template.docx');
@@ -22,7 +23,6 @@ class Word extends CI_Controller
         $template->setValue('lama_kegiatan', $get_data->lama_kegiatan);
         $template->setValue('jumlah_anggota', $get_data->jumlah_anggota);
 
-        // $template->setValue('id_dinas1', $get_data->id_dinas1);
         // $template->setValue('id_dinas2', $get_data->id_dinas2);
         // $template->setValue('id_dinas3', $get_data->id_dinas3);
         // $template->setValue('id_dinas4', $get_data->id_dinas4);
@@ -55,5 +55,13 @@ class Word extends CI_Controller
         $this->db->where('id', $id);
         $q = $this->db->get()->row();
         return $q;
+    }
+
+    private function get_dinas()
+    {
+        $this->load->database();
+        $this->db->select('*');
+        $this->db->order_by("id", "asc");
+        return $this->db->get('tb_dinas')->result();
     }
 }
