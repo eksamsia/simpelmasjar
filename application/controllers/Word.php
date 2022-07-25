@@ -8,6 +8,7 @@ class Word extends CI_Controller
 
     public function print_pengajuan()
     {
+        //echo $this->input->post('id_dinas4').'--'.$this->input->post('id_dinas5').'--'.$this->input->post('id_dinas6');
         $get_data = $this->ambil_data($this->input->post('id_download'));
         $get_namadinas = $this->get_dinas($this->input->post('id_download'));
 
@@ -23,29 +24,16 @@ class Word extends CI_Controller
         $template->setValue('lama_kegiatan', $get_data->lama_kegiatan);
         $template->setValue('jumlah_anggota', $get_data->jumlah_anggota);
 
-        $template->setValue('id_dinas1', $this->input->post('id_dinas1'));
-        $template->setValue('id_dinas2', $this->input->post('id_dinas2'));
-        $template->setValue('id_dinas3', $this->input->post('id_dinas3'));
-        $template->setValue('id_dinas4', $this->input->post('id_dinas4'));
-        $template->setValue('id_dinas5', $this->input->post('id_dinas5'));
-        $template->setValue('id_dinas6', $this->input->post('id_dinas6'));
+        $template->setValue('dinas1', $this->input->post('id_dinas1'));
+        $template->setValue('dinas2', $this->input->post('id_dinas2'));
+        $template->setValue('dinas3', $this->input->post('id_dinas3'));
+        $template->setValue('dinas4', $this->input->post('id_dinas4'));
+        $template->setValue('dinas5', $this->input->post('id_dinas5'));
+        $template->setValue('dinas6', $this->input->post('id_dinas6'));
 
         $temp_filename = 'surat-kerja-praktek.docx';
         $template->saveAs($temp_filename);
         echo json_encode($temp_filename);
-
-        // header('Content-Description: File Transfer');
-        // header('Content-Type: application/octet-stream');
-        // header('Content-Disposition: attachment; filename='.$temp_filename);
-        // header('Content-Transfer-Encoding: binary');
-        // header('Expires: 0');
-        // header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
-        // header('Pragma: public');
-        // header('Content-Length: ' . filesize($temp_filename));
-        // flush();
-        // readfile($temp_filename);
-        // unlink($temp_filename);
-        // exit;
     }
 
     private function ambil_data($id)

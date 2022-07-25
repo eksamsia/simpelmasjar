@@ -414,7 +414,7 @@ foreach ($data_kategori as $val) {?>
                                         <option value="" selected disabled>Pilihan Dinas</option>
                                         <?php
 foreach ($data_dinas as $val) {?>
-                                        <option value="<?=$val->id;?>" ;?><?=$val->nama;?></option>;
+                                        <option value="<?=$val->nama;?>" ;?><?=$val->nama;?></option>;
                                         <?php }?>
                                     </select>
                                 </div>
@@ -430,31 +430,31 @@ foreach ($data_dinas as $val) {?>
                         <select class="form-control" name="id_dinas2" id="id_dinas2" required>
                             <option value="" selected disabled>Pilihan Dinas</option>
                             <?php foreach ($data_dinas as $val) {?>
-                            <option value="<?=$val->id;?>" ;?><?=$val->nama;?></option>;
+                            <option value="<?=$val->nama;?>" ;?><?=$val->nama;?></option>;
                             <?php }?>
                         </select><br>
                         <select class="form-control" name="id_dinas3" id="id_dinas3" required>
                             <option value="" selected disabled>Pilihan Dinas</option>
                             <?php foreach ($data_dinas as $val) {?>
-                            <option value="<?=$val->id;?>" ;?><?=$val->nama;?></option>;
+                            <option value="<?=$val->nama;?>" ;?><?=$val->nama;?></option>;
                             <?php }?>
                         </select><br>
                         <select class="form-control" name="id_dinas4" id="id_dinas4" required>
                             <option value="" selected disabled>Pilihan Dinas</option>
                             <?php foreach ($data_dinas as $val) {?>
-                            <option value="<?=$val->id;?>" ;?><?=$val->nama;?></option>;
+                            <option value="<?=$val->nama;?>" ;?><?=$val->nama;?></option>;
                             <?php }?>
                         </select><br>
                         <select class="form-control" name="id_dinas5" id="id_dinas5" required>
                             <option value="" selected disabled>Pilihan Dinas</option>
                             <?php foreach ($data_dinas as $val) {?>
-                            <option value="<?=$val->id;?>" ;?><?=$val->nama;?></option>;
+                            <option value="<?=$val->nama;?>" ;?><?=$val->nama;?></option>;
                             <?php }?>
                         </select><br>
                         <select class="form-control" name="id_dinas6" id="id_dinas6" required>
                             <option value="" selected disabled>Pilihan Dinas</option>
                             <?php foreach ($data_dinas as $val) {?>
-                            <option value="<?=$val->id;?>" ;?><?=$val->nama;?></option>;
+                            <option value="<?=$val->nama;?>" ;?><?=$val->nama;?></option>;
                             <?php }?>
                         </select>
 
@@ -701,12 +701,12 @@ foreach ($data_dinas as $val) {?>
     function download_surat() {
 
         var id_download = $("#download").find("input[id='id_download']").val();
-        var id_dinas1 = $("#download").find("select[id='id_dinas1']").text();
-        var id_dinas2 = $("#download").find("select[id='id_dinas2']").text();
-        var id_dinas3 = $("#download").find("select[id='id_dinas3']").text();
-        var id_dinas4 = $("#download").find("select[id='id_dinas4']").text();
-        var id_dinas5 = $("#download").find("select[id='id_dinas5']").text();
-        var id_dinas6 = $("#download").find("select[id='id_dinas6']").text();
+        var id_dinas1 = $("#download").find("select[id='id_dinas1']").val();
+        var id_dinas2 = $("#download").find("select[id='id_dinas2']").val();
+        var id_dinas3 = $("#download").find("select[id='id_dinas3']").val();
+        var id_dinas4 = $("#download").find("select[id='id_dinas4']").val();
+        var id_dinas5 = $("#download").find("select[id='id_dinas5']").val();
+        var id_dinas6 = $("#download").find("select[id='id_dinas6']").val();
 
         var form_data = new FormData();
         form_data.append('id_download', id_download);
