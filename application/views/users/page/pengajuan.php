@@ -158,12 +158,11 @@ foreach ($data_kategori as $val) {?>
                                 <div class="row">
                                     <div class="col-6">
                                         <div class="mb-3">
-                                            <label class="form-label">Surat Dari (ex. Dekan Stikes Satria Bhakti
-                                                Nganjuk)</label>
+                                            <label class="form-label">Surat Dari</label>
                                             <div class="input-group">
-
                                                 <input type="text" class="form-control" id="nama_pejabat"
-                                                    name="nama_pejabat" placeholder="Nama Pejabat">
+                                                    name="nama_pejabat" placeholder="ex. Dekan Stikes Satria Bhakti
+                                                Nganjuk">
                                             </div>
                                         </div>
                                     </div>
@@ -251,9 +250,9 @@ foreach ($data_kategori as $val) {?>
                                 </div>
                             </div>
 
-                            <!-- <div class="col-12" id="event-time"> -->
-                            <!-- ++++++++++ JAM RAPAT +++++++++++++++ -->
-                            <!-- <div class="row">
+                            <div class="col-12" id="event-time">
+                                <!-- ++++++++++ JAM RAPAT +++++++++++++++ -->
+                                <div class="row">
                                     <div class="col-6">
                                         <div class="mb-3">
                                             <label class="form-label">Mulai</label>
@@ -275,7 +274,7 @@ foreach ($data_kategori as $val) {?>
                                         </div>
                                     </div>
                                 </div>
-                            </div> -->
+                            </div>
                             <!--end col-->
 
                             <div class="col-lg-12">
@@ -286,7 +285,7 @@ foreach ($data_kategori as $val) {?>
                                 </div>
                             </div>
 
-                            <!-- <div class="col-lg-12">
+                            <div class="col-lg-12">
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Upload Surat Pengantar</label>
 
@@ -298,7 +297,7 @@ foreach ($data_kategori as $val) {?>
                                         </a>
                                     </div>
                                 </div>
-                            </div> -->
+                            </div>
 
                             <div class="col-lg-12" id="progress" style="display:none">
                                 <div class="progress animated-progress">
