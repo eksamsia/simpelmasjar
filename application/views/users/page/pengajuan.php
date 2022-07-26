@@ -53,6 +53,7 @@
                                                 <th scope="col">Keterangan</th>
                                                 <th scope="col">Dokumen</th>
                                                 <th scope="col">Aksi</th>
+                                                <th scope="col">Preview</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -93,7 +94,9 @@ foreach ($data_pengajuan as $val) {
                                                     <?php echo '<button type="button" class="btn btn-info btn-animation waves-effect waves-light" title="Edit" onclick="update(' . "'" . $val->id . "'" . ')"><i class="las la-pen-fancy"></i></button> &nbsp;' . '<button type="button" class="btn btn-danger btn-animation waves-effect waves-light" title="Hapus" onclick="hapus(' . "'" . $val->id . "'" . ')"><i class="las la-trash"></i></button> &nbsp;' . $tombol; ?>
                                                 </td>
                                                 <td style="width: 10%; vertical-align">
-                                                    <?php echo '<button type="button" class="btn btn-success btn-animation waves-effect waves-light" title="Download" onclick="preview(' . "'" . $val->id . "'" . ')"><i class="las la-eye"></i></button> &nbsp;'; ?>
+                                                    <?php
+                                                        echo '<button type="button" class="btn btn-success btn-animation waves-effect waves-light" title="Download" onclick="preview(' . "'" . $val->id . "'" . ')"><i class="las la-eye"></i></button> &nbsp;';
+                                                    ?>
                                                 </td>
                                             </tr>
                                             <?php }?>
@@ -407,20 +410,22 @@ foreach ($data_kategori as $val) {?>
                                     </table>
                                     <br>
                                     <br>
-
+                                    <?php if($this->session->userdata('role')==1){?>
                                     <label for="teammembersName" class="form-label">Disampaikan Kepada : </label>
                                     <input type="hidden" class="form-control" id="id_edit" name="id_edit">
                                     <input type="hidden" class="form-control" id="indikator" name="indikator">
                                     <select class="form-control" name="id_dinas1" id="id_dinas1" required>
                                         <option value="" selected disabled>Pilihan Dinas</option>
                                         <?php
-foreach ($data_dinas as $val) {?>
+                                        foreach ($data_dinas as $val) {?>
                                         <option value="<?=$val->nama;?>" ;?><?=$val->nama;?></option>;
                                         <?php }?>
                                     </select>
+                                            <?php }?>
                                 </div>
                             </div>
                         </div>
+                        <?php if($this->session->userdata('role')==1){?>
                         <label for="teammembersName" class="form-label">Tembusan Disampaikan Kepada</label>
                         <ol>
                             <li>Bupati Nganjuk (Sebagai Laporan)</li>
@@ -458,16 +463,23 @@ foreach ($data_dinas as $val) {?>
                             <option value="<?=$val->nama;?>" ;?><?=$val->nama;?></option>;
                             <?php }?>
                         </select>
-
+                               <?php } ?>
                         <br>
                         <div class="col-lg-12" id="tombol">
                             <div class="hstack gap-2 justify-content-end">
-                                <a href="" id="url_download" class="btn btn-success" title="Download"><i
-                                        class="las la-print"></i> Download</a>
-                                <button type="button" class="btn btn-info" onclick="download_surat()"><i
-                                        class="las la-print"></i> Download Jquery</button>
-                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i
-                                        class="las la-times"></i> Batal</button>
+                            <?php
+                            if ($this->session->userdata('role') == 1){
+                                // <a href="" id="url_download" class="btn btn-success" title="Download"><i
+                                //         class="las la-print"></i> Download</a>
+                                echo '<button type="button" class="btn btn-info" onclick="download_surat()"><i
+                                        class="las la-print"></i> Download Jquery</button>';
+                                echo '<button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i
+                                        class="las la-times"></i> Batal</button>';
+                            } else {
+                                echo '<button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i
+                                        class="las la-times"></i> Batal</button>';
+                            }
+                            ?>
                             </div>
                         </div>
                 </div>
