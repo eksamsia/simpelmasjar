@@ -95,8 +95,8 @@ foreach ($data_pengajuan as $val) {
                                                 </td>
                                                 <td style="width: 10%; vertical-align">
                                                     <?php
-                                                        echo '<button type="button" class="btn btn-success btn-animation waves-effect waves-light" title="Download" onclick="preview(' . "'" . $val->id . "'" . ')"><i class="las la-eye"></i></button> &nbsp;';
-                                                    ?>
+echo '<button type="button" class="btn btn-success btn-animation waves-effect waves-light" title="Download" onclick="preview(' . "'" . $val->id . "'" . ')"><i class="las la-eye"></i></button> &nbsp;';
+    ?>
                                                 </td>
                                             </tr>
                                             <?php }?>
@@ -128,9 +128,9 @@ foreach ($data_pengajuan as $val) {
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                <img style= "width: 720px; float: right;" src="<?php echo base_url('assets/contoh.jpeg'); ?>" />
+                    <img style="width: 600px;" src="<?php echo base_url('assets/contoh.jpeg'); ?>" />
                     <form id="form_input">
-                    
+
                         <div class="row">
 
                             <div class="col-lg-12">
@@ -254,9 +254,9 @@ foreach ($data_kategori as $val) {?>
                                 </div>
                             </div>
 
-                            <div class="col-12" id="event-time">
-                                <!-- ++++++++++ JAM RAPAT +++++++++++++++ -->
-                                <div class="row">
+                            <!-- <div class="col-12" id="event-time"> -->
+                            <!-- ++++++++++ JAM RAPAT +++++++++++++++ -->
+                            <!-- <div class="row">
                                     <div class="col-6">
                                         <div class="mb-3">
                                             <label class="form-label">Mulai</label>
@@ -278,7 +278,7 @@ foreach ($data_kategori as $val) {?>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <!--end col-->
 
                             <div class="col-lg-12">
@@ -366,7 +366,7 @@ foreach ($data_kategori as $val) {?>
                                             <td><label for="teammembersName" class="form-label"></label><span
                                                     id="judul"></span></td>
                                         </tr>
-                                        <tr>
+                                        <!-- <tr>
                                             <th>Mulai Penalitian</th>
                                             <th>Selesai Penelitian</th>
                                         </tr>
@@ -375,7 +375,7 @@ foreach ($data_kategori as $val) {?>
                                                     id="mulai_penelitian"></span></td>
                                             <td><label for="teammembersName" class="form-label"></label><span
                                                     id="selesai_penelitian"></span></td>
-                                        </tr>
+                                        </tr> -->
                                         <tr>
                                             <th>Pejabat</th>
                                             <th>No. Surat</th>
@@ -410,22 +410,22 @@ foreach ($data_kategori as $val) {?>
                                     </table>
                                     <br>
                                     <br>
-                                    <?php if($this->session->userdata('role')==1){?>
+                                    <?php if ($this->session->userdata('role') == 1) {?>
                                     <label for="teammembersName" class="form-label">Disampaikan Kepada : </label>
                                     <input type="hidden" class="form-control" id="id_edit" name="id_edit">
                                     <input type="hidden" class="form-control" id="indikator" name="indikator">
                                     <select class="form-control" name="id_dinas1" id="id_dinas1" required>
                                         <option value="" selected disabled>Pilihan Dinas</option>
                                         <?php
-                                        foreach ($data_dinas as $val) {?>
+foreach ($data_dinas as $val) {?>
                                         <option value="<?=$val->nama;?>" ;?><?=$val->nama;?></option>;
                                         <?php }?>
                                     </select>
-                                            <?php }?>
+                                    <?php }?>
                                 </div>
                             </div>
                         </div>
-                        <?php if($this->session->userdata('role')==1){?>
+                        <?php if ($this->session->userdata('role') == 1) {?>
                         <label for="teammembersName" class="form-label">Tembusan Disampaikan Kepada</label>
                         <ol>
                             <li>Bupati Nganjuk (Sebagai Laporan)</li>
@@ -463,23 +463,23 @@ foreach ($data_kategori as $val) {?>
                             <option value="<?=$val->nama;?>" ;?><?=$val->nama;?></option>;
                             <?php }?>
                         </select>
-                               <?php } ?>
+                        <?php }?>
                         <br>
                         <div class="col-lg-12" id="tombol">
                             <div class="hstack gap-2 justify-content-end">
-                            <?php
-                            if ($this->session->userdata('role') == 1){
-                                // <a href="" id="url_download" class="btn btn-success" title="Download"><i
-                                //         class="las la-print"></i> Download</a>
-                                echo '<button type="button" class="btn btn-info" onclick="download_surat()"><i
+                                <?php
+if ($this->session->userdata('role') == 1) {
+    // <a href="" id="url_download" class="btn btn-success" title="Download"><i
+    //         class="las la-print"></i> Download</a>
+    echo '<button type="button" class="btn btn-info" onclick="download_surat()"><i
                                         class="las la-print"></i> Download Jquery</button>';
-                                echo '<button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i
+    echo '<button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i
                                         class="las la-times"></i> Batal</button>';
-                            } else {
-                                echo '<button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i
+} else {
+    echo '<button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i
                                         class="las la-times"></i> Batal</button>';
-                            }
-                            ?>
+}
+?>
                             </div>
                         </div>
                 </div>
@@ -689,7 +689,7 @@ foreach ($data_kategori as $val) {?>
                 $("#download").find("span[id='mulai_penelitian']").text(data.mulai_penelitian);
                 $("#download").find("span[id='id_user']").text(data.id_user);
                 $("#download").find("span[id='selesai_penelitian']").text(data.selesai_penelitian);
-                $("#download").find("span[id='nama_pejabat']").text(data.mulai_penelitian);
+                $("#download").find("span[id='nama_pejabat']").text(data.nama_pejabat);
                 $("#download").find("span[id='no_surat']").text(data.no_surat);
                 $("#download").find("span[id='status_pemohon']").text(data.status_pemohon);
                 $("#download").find("span[id='no_wa']").text(data.no_wa);
