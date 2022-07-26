@@ -118,15 +118,16 @@ foreach ($data_pengajuan as $val) {
 
     <!-- PENGAJUAN IZIN -->
     <div class="modal fade" id="addmembers" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content border-0">
                 <div class="modal-header p-3 bg-soft-info">
                     <h5 class="modal-title" id="myModalLabel">Form Pengajuan</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-
+                <img style= "width: 720px; float: right;" src="<?php echo base_url('assets/contoh.jpeg'); ?>" />
                     <form id="form_input">
+                    
                         <div class="row">
 
                             <div class="col-lg-12">
@@ -639,7 +640,7 @@ foreach ($data_dinas as $val) {?>
                     .mulai_penelitian);
                 $("#addmembers").find("input[name='selesai_penelitian']").val(data.data[0]
                     .selesai_penelitian);
-                $("#addmembers").find("input[name='nama_pejabat']").val(data.data[0].mulai_penelitian);
+                $("#addmembers").find("input[name='nama_pejabat']").val(data.data[0].nama_pejabat);
                 $("#addmembers").find("input[name='no_surat']").val(data.data[0].no_surat);
                 $("#addmembers").find("input[name='status_pemohon']").val(data.data[0].status_pemohon);
                 $("#addmembers").find("input[name='no_wa']").val(data.data[0].no_wa);
