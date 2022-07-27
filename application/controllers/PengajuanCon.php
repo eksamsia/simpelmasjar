@@ -63,6 +63,7 @@ class PengajuanCon extends DefaultController
         $msg = "";
         $file_element_name = 'file_gambar';
         $imgpath = "";
+        $invoice_id=substr(sha1(time()), 0, 8);
 
         $config['upload_path'] = './upload_file/gambar_file/';
         $config['allowed_types'] = 'gif|jpg|png|jpeg';
@@ -78,6 +79,10 @@ class PengajuanCon extends DefaultController
             $a = 'upload_file/gambar_file/';
             $b = $data['file_name'];
             $imgpath = null;
+            
+            if($this->check_invoice($invoice_id)>0){
+                $invoice_id=substr(sha1(time()), 0, 8);
+            } 
 
             $data = array(
                 'id_user' => $this->session->userdata("userid"),
@@ -92,6 +97,7 @@ class PengajuanCon extends DefaultController
                 'no_wa' => $this->input->post("no_wa"),
                 'lokasi' => $this->input->post("lokasi"),
                 'alamat' => $this->input->post("alamat"),
+                'invoiceid' => $invoice_id,
                 'lama_kegiatan' => $this->input->post("lama_kegiatan"),
                 'jumlah_anggota' => $this->input->post("jumlah_anggota"),
                 'upload_file' => $imgpath,
@@ -126,6 +132,10 @@ class PengajuanCon extends DefaultController
                 $b = $data['file_name'];
                 $imgpath = $a . $b;
 
+                if($this->check_invoice($invoice_id)>0){
+                    $invoice_id=substr(sha1(time()), 0, 8);
+                } 
+
                 $data = array(
                     'id_user' => $this->session->userdata("userid"),
                     'judul_penelitian' => $this->input->post("judul_penelitian"),
@@ -139,6 +149,7 @@ class PengajuanCon extends DefaultController
                     'no_wa' => $this->input->post("no_wa"),
                     'lokasi' => $this->input->post("lokasi"),
                     'alamat' => $this->input->post("alamat"),
+                    'invoiceid' => $invoice_id,
                     'lama_kegiatan' => $this->input->post("lama_kegiatan"),
                     'jumlah_anggota' => $this->input->post("jumlah_anggota"),
                     'upload_file' => $imgpath,
@@ -160,6 +171,14 @@ class PengajuanCon extends DefaultController
         echo json_encode(array('status' => $status, 'msg' => $msg));
     }
 
+    private function check_invoice($invoiceid){
+        $this->load->database();
+        $this->db->select('id');
+        $this->db->from('pengajuan');
+        $this->db->where('invoiceid', $invoiceid);
+        $q = $this->db->get()->num_rows();
+        return $q;
+    }
     public function getById($id)
     {
         $this->load->database();

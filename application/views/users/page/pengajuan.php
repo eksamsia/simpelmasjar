@@ -47,8 +47,8 @@
                                                 <th scope="col">No</th>
                                                 <th scope="col">Nama</th>
                                                 <th scope="col">Keperluan</th>
-                                                <th scope="col">Tanggal Mulai</th>
-                                                <th scope="col">Tanggal Selesai</th>
+                                                <th scope="col">No. Surat</th>
+                                                <th scope="col">Kode Invoice</th>
                                                 <th scope="col">Judul Penelitian</th>
                                                 <th scope="col">Keterangan</th>
                                                 <th scope="col">Dokumen</th>
@@ -79,9 +79,9 @@ foreach ($data_pengajuan as $val) {
                                                 <td style="width: 20%; vertical-align">
                                                     <?php echo help_nama_kategori($val->id_kategori); ?></td>
                                                 <td style="width: 20%; vertical-align">
-                                                    <?php echo $val->mulai_penelitian; ?></td>
+                                                    <?php echo $val->no_surat; ?></td>
                                                 <td style="width: 20%; vertical-align">
-                                                    <?php echo $val->selesai_penelitian; ?></td>
+                                                    <?php echo $val->invoiceid; ?></td>
                                                 <td style="width: 20%; vertical-align">
                                                     <?php echo $val->judul_penelitian; ?>
                                                 <td style="width: 20%; vertical-align">
@@ -134,8 +134,6 @@ foreach ($data_pengajuan as $val) {
 
                             <div class="col-lg-12">
                                 <div class="mb-3">
-                                    <label for="teammembersName" class="form-label">Invoice ID</label>
-                                    <input type="text" class="form-control" id="indikator" name="invoiceid">
                                     <label for="teammembersName" class="form-label">Keperluan</label>
                                     <input type="hidden" class="form-control" id="id_edit" name="id_edit">
                                     <input type="hidden" class="form-control" id="indikator" name="indikator">
@@ -346,7 +344,6 @@ foreach ($data_kategori as $val) {?>
                             <div class="col-lg-12">
                                 <div class="mb-3">
                                     <table style="width:100%">
-                                        <tr>
                                             <th>Nama Pemohon</th>
                                             <th>Perihal</th>
                                         </tr>
@@ -538,6 +535,7 @@ foreach ($data_kategori as $val) {?>
         $("#addmembers").find("input[name='perihal']").val('');
         $("#addmembers").find("select[name='kategori']").val('');
         $("#addmembers").find("input[name='file_gambar']").val('');
+        // $("#addmembers").find("input[name='invoiceid']").val('');
 
         $("#addmembers").find("a[id='link_download']").text('');
         $("#addmembers").find("a[id='link_download']").removeAttr("href");
@@ -559,6 +557,7 @@ foreach ($data_kategori as $val) {?>
         var jumlah_anggota = $("#addmembers").find("input[name='jumlah_anggota']").val();
         var kategori = $("#addmembers").find("select[name='id_kategori']").val();
         var perihal = $("#addmembers").find("input[name='perihal']").val();
+        // var invoiceid = $("#addmembers").find("input[name='invoiceid']").val();
         var file_gambar = $("#addmembers").find("input[name='file']")[0].files[0];
         var url = '';
 
@@ -592,6 +591,7 @@ foreach ($data_kategori as $val) {?>
             form_data.append('lama_kegiatan', lama_kegiatan);
             form_data.append('jumlah_anggota', jumlah_anggota);
             form_data.append('perihal', perihal);
+            // form_data.append('invoiceid', invoiceid);
 
             $.ajax({
                 dataType: 'json',
@@ -662,6 +662,7 @@ foreach ($data_kategori as $val) {?>
                 $("#addmembers").find("input[name='lama_kegiatan']").val(data.data[0].lama_kegiatan);
                 $("#addmembers").find("input[name='jumlah_anggota']").val(data.data[0].jumlah_anggota);
                 $("#addmembers").find("input[name='perihal']").val(data.data[0].perihal);
+                $("#addmembers").find("input[name='invoiceid']").val(data.data[0].invoiceid);
                 $("#addmembers").find("select[name='id_kategori']").val(data.data[0].id_kategori);
                 $("#addmembers").find("a[id='link_download']").attr("href", baseUrl + data.data[0]
                     .upload_file);
