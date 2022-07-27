@@ -37,7 +37,23 @@
                                         class="ri-add-fill me-1 align-bottom"></i> Tambah</button>
                             </div>
                         </div><!-- end card header -->
+                        <!-- pagination and search -->
+                        <div id="table_id_wrapper" class="dataTables_wrapper">
 
+                            <div id="table_id_filter" class="dataTables_filter"
+                                style="margin-right: 20px; padding-top: 10px;">
+                                <label style="margin-right: 840px;">Show <select name="table_id_length"
+                                        aria-controls="table_id" class="">
+                                        <option value="10">10</option>
+                                        <option value="25">25</option>
+                                        <option value="50">50</option>
+                                        <option value="100">100</option>
+                                    </select> entries</label>
+
+                                <label>Search:<input type="search" class="" placeholder=""
+                                        aria-controls="table_id"></label>
+                            </div>
+                        </div>
                         <div class="card-body">
                             <div class="live-preview">
                                 <div class="table-responsive">
@@ -47,8 +63,8 @@
                                                 <th scope="col">No</th>
                                                 <th scope="col">Nama</th>
                                                 <th scope="col">Keperluan</th>
-                                                <th scope="col">No. Surat</th>
-                                                <th scope="col">Kode Invoice</th>
+                                                <th scope="col">Tanggal Mulai</th>
+                                                <th scope="col">Tanggal Selesai</th>
                                                 <th scope="col">Judul Penelitian</th>
                                                 <th scope="col">Keterangan</th>
                                                 <th scope="col">Dokumen</th>
@@ -79,9 +95,9 @@ foreach ($data_pengajuan as $val) {
                                                 <td style="width: 20%; vertical-align">
                                                     <?php echo help_nama_kategori($val->id_kategori); ?></td>
                                                 <td style="width: 20%; vertical-align">
-                                                    <?php echo $val->no_surat; ?></td>
+                                                    <?php echo $val->mulai_penelitian; ?></td>
                                                 <td style="width: 20%; vertical-align">
-                                                    <?php echo $val->invoiceid; ?></td>
+                                                    <?php echo $val->selesai_penelitian; ?></td>
                                                 <td style="width: 20%; vertical-align">
                                                     <?php echo $val->judul_penelitian; ?>
                                                 <td style="width: 20%; vertical-align">
@@ -95,8 +111,8 @@ foreach ($data_pengajuan as $val) {
                                                 </td>
                                                 <td style="width: 10%; vertical-align">
                                                     <?php
-                                                        echo '<button type="button" class="btn btn-success btn-animation waves-effect waves-light" title="Download" onclick="preview(' . "'" . $val->id . "'" . ')"><i class="las la-eye"></i></button> &nbsp;';
-                                                    ?>
+echo '<button type="button" class="btn btn-success btn-animation waves-effect waves-light" title="Download" onclick="preview(' . "'" . $val->id . "'" . ')"><i class="las la-eye"></i></button> &nbsp;';
+    ?>
                                                 </td>
                                             </tr>
                                             <?php }?>
@@ -128,10 +144,14 @@ foreach ($data_pengajuan as $val) {
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <div style="margin-top: 0px; padding-bottom: 10px;  ">
+                        <a href="contoh.jpeg" id="link_download" target="_blank"
+                            class="btn btn-warning btn-label waves-effect waves-light"><i
+                                class="lar la-file-image label-icon align-middle fs-16 me-2"></i> Contoh Pengisian Form
+                        </a>
+                    </div>
                     <form id="form_input">
-                    
                         <div class="row">
-
                             <div class="col-lg-12">
                                 <div class="mb-3">
                                     <label for="teammembersName" class="form-label">Keperluan</label>
@@ -253,9 +273,9 @@ foreach ($data_kategori as $val) {?>
                                 </div>
                             </div>
 
-                            <div class="col-12" id="event-time">
-                                <!-- ++++++++++ JAM RAPAT +++++++++++++++ -->
-                                <div class="row">
+                            <!-- <div class="col-12" id="event-time"> -->
+                            <!-- ++++++++++ JAM RAPAT +++++++++++++++ -->
+                            <!-- <div class="row">
                                     <div class="col-6">
                                         <div class="mb-3">
                                             <label class="form-label">Mulai</label>
@@ -277,7 +297,7 @@ foreach ($data_kategori as $val) {?>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <!--end col-->
 
                             <div class="col-lg-12">
@@ -293,12 +313,12 @@ foreach ($data_kategori as $val) {?>
                                     <label for="formFile" class="form-label">Upload Surat Pengantar</label>
 
                                     <input class="form-control" type="file" id="file" name="file">
-                                    <div style="margin-top: 1rem;">
+                                    <!-- <div style="margin-top: 1rem;">
                                         <a href="" id="link_download" target="_blank"
                                             class="btn btn-warning btn-label waves-effect waves-light"><i
                                                 class=" ri-download-cloud-2-fill label-icon align-middle fs-16 me-2"></i>
                                         </a>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
 
@@ -344,6 +364,7 @@ foreach ($data_kategori as $val) {?>
                             <div class="col-lg-12">
                                 <div class="mb-3">
                                     <table style="width:100%">
+                                        <tr>
                                             <th>Nama Pemohon</th>
                                             <th>Perihal</th>
                                         </tr>
@@ -364,7 +385,7 @@ foreach ($data_kategori as $val) {?>
                                             <td><label for="teammembersName" class="form-label"></label><span
                                                     id="judul"></span></td>
                                         </tr>
-                                        <tr>
+                                        <!-- <tr>
                                             <th>Mulai Penalitian</th>
                                             <th>Selesai Penelitian</th>
                                         </tr>
@@ -373,7 +394,7 @@ foreach ($data_kategori as $val) {?>
                                                     id="mulai_penelitian"></span></td>
                                             <td><label for="teammembersName" class="form-label"></label><span
                                                     id="selesai_penelitian"></span></td>
-                                        </tr>
+                                        </tr> -->
                                         <tr>
                                             <th>Pejabat</th>
                                             <th>No. Surat</th>
@@ -408,22 +429,22 @@ foreach ($data_kategori as $val) {?>
                                     </table>
                                     <br>
                                     <br>
-                                    <?php if($this->session->userdata('role')==1){?>
+                                    <?php if ($this->session->userdata('role') == 1) {?>
                                     <label for="teammembersName" class="form-label">Disampaikan Kepada : </label>
                                     <input type="hidden" class="form-control" id="id_edit" name="id_edit">
                                     <input type="hidden" class="form-control" id="indikator" name="indikator">
                                     <select class="form-control" name="id_dinas1" id="id_dinas1" required>
                                         <option value="" selected disabled>Pilihan Dinas</option>
                                         <?php
-                                        foreach ($data_dinas as $val) {?>
+foreach ($data_dinas as $val) {?>
                                         <option value="<?=$val->nama;?>" ;?><?=$val->nama;?></option>;
                                         <?php }?>
                                     </select>
-                                            <?php }?>
+                                    <?php }?>
                                 </div>
                             </div>
                         </div>
-                        <?php if($this->session->userdata('role')==1){?>
+                        <?php if ($this->session->userdata('role') == 1) {?>
                         <label for="teammembersName" class="form-label">Tembusan Disampaikan Kepada</label>
                         <ol>
                             <li>Bupati Nganjuk (Sebagai Laporan)</li>
@@ -461,23 +482,23 @@ foreach ($data_kategori as $val) {?>
                             <option value="<?=$val->nama;?>" ;?><?=$val->nama;?></option>;
                             <?php }?>
                         </select>
-                               <?php } ?>
+                        <?php }?>
                         <br>
                         <div class="col-lg-12" id="tombol">
                             <div class="hstack gap-2 justify-content-end">
-                            <?php
-                            if ($this->session->userdata('role') == 1){
-                                // <a href="" id="url_download" class="btn btn-success" title="Download"><i
-                                //         class="las la-print"></i> Download</a>
-                                echo '<button type="button" class="btn btn-info" onclick="download_surat()"><i
+                                <?php
+if ($this->session->userdata('role') == 1) {
+    // <a href="" id="url_download" class="btn btn-success" title="Download"><i
+    //         class="las la-print"></i> Download</a>
+    echo '<button type="button" class="btn btn-info" onclick="download_surat()"><i
                                         class="las la-print"></i> Download Jquery</button>';
-                                echo '<button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i
+    echo '<button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i
                                         class="las la-times"></i> Batal</button>';
-                            } else {
-                                echo '<button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i
+} else {
+    echo '<button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i
                                         class="las la-times"></i> Batal</button>';
-                            }
-                            ?>
+}
+?>
                             </div>
                         </div>
                 </div>
@@ -535,7 +556,6 @@ foreach ($data_kategori as $val) {?>
         $("#addmembers").find("input[name='perihal']").val('');
         $("#addmembers").find("select[name='kategori']").val('');
         $("#addmembers").find("input[name='file_gambar']").val('');
-        // $("#addmembers").find("input[name='invoiceid']").val('');
 
         $("#addmembers").find("a[id='link_download']").text('');
         $("#addmembers").find("a[id='link_download']").removeAttr("href");
@@ -557,7 +577,6 @@ foreach ($data_kategori as $val) {?>
         var jumlah_anggota = $("#addmembers").find("input[name='jumlah_anggota']").val();
         var kategori = $("#addmembers").find("select[name='id_kategori']").val();
         var perihal = $("#addmembers").find("input[name='perihal']").val();
-        // var invoiceid = $("#addmembers").find("input[name='invoiceid']").val();
         var file_gambar = $("#addmembers").find("input[name='file']")[0].files[0];
         var url = '';
 
@@ -591,7 +610,6 @@ foreach ($data_kategori as $val) {?>
             form_data.append('lama_kegiatan', lama_kegiatan);
             form_data.append('jumlah_anggota', jumlah_anggota);
             form_data.append('perihal', perihal);
-            // form_data.append('invoiceid', invoiceid);
 
             $.ajax({
                 dataType: 'json',
@@ -662,7 +680,6 @@ foreach ($data_kategori as $val) {?>
                 $("#addmembers").find("input[name='lama_kegiatan']").val(data.data[0].lama_kegiatan);
                 $("#addmembers").find("input[name='jumlah_anggota']").val(data.data[0].jumlah_anggota);
                 $("#addmembers").find("input[name='perihal']").val(data.data[0].perihal);
-                $("#addmembers").find("input[name='invoiceid']").val(data.data[0].invoiceid);
                 $("#addmembers").find("select[name='id_kategori']").val(data.data[0].id_kategori);
                 $("#addmembers").find("a[id='link_download']").attr("href", baseUrl + data.data[0]
                     .upload_file);
@@ -691,7 +708,7 @@ foreach ($data_kategori as $val) {?>
                 $("#download").find("span[id='mulai_penelitian']").text(data.mulai_penelitian);
                 $("#download").find("span[id='id_user']").text(data.id_user);
                 $("#download").find("span[id='selesai_penelitian']").text(data.selesai_penelitian);
-                $("#download").find("span[id='nama_pejabat']").text(data.mulai_penelitian);
+                $("#download").find("span[id='nama_pejabat']").text(data.nama_pejabat);
                 $("#download").find("span[id='no_surat']").text(data.no_surat);
                 $("#download").find("span[id='status_pemohon']").text(data.status_pemohon);
                 $("#download").find("span[id='no_wa']").text(data.no_wa);
