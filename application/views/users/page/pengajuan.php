@@ -128,13 +128,14 @@ foreach ($data_pengajuan as $val) {
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                <img style= "width: 720px; float: right;" src="<?php echo base_url('assets/contoh.jpeg'); ?>" />
                     <form id="form_input">
                     
                         <div class="row">
 
                             <div class="col-lg-12">
                                 <div class="mb-3">
+                                    <label for="teammembersName" class="form-label">Invoice ID</label>
+                                    <input type="text" class="form-control" id="indikator" name="invoiceid">
                                     <label for="teammembersName" class="form-label">Keperluan</label>
                                     <input type="hidden" class="form-control" id="id_edit" name="id_edit">
                                     <input type="hidden" class="form-control" id="indikator" name="indikator">
