@@ -63,8 +63,8 @@
                                                 <th scope="col">No</th>
                                                 <th scope="col">Nama</th>
                                                 <th scope="col">Keperluan</th>
-                                                <th scope="col">Tanggal Mulai</th>
-                                                <th scope="col">Tanggal Selesai</th>
+                                                <th scope="col">Invoice ID</th>
+                                                <th scope="col">No. Surat</th>
                                                 <th scope="col">Judul Penelitian</th>
                                                 <th scope="col">Keterangan</th>
                                                 <th scope="col">Dokumen</th>
@@ -95,9 +95,9 @@ foreach ($data_pengajuan as $val) {
                                                 <td style="width: 20%; vertical-align">
                                                     <?php echo help_nama_kategori($val->id_kategori); ?></td>
                                                 <td style="width: 20%; vertical-align">
-                                                    <?php echo $val->mulai_penelitian; ?></td>
+                                                    <?php echo $val->invoiceid; ?></td>
                                                 <td style="width: 20%; vertical-align">
-                                                    <?php echo $val->selesai_penelitian; ?></td>
+                                                    <?php echo $val->no_surat; ?></td>
                                                 <td style="width: 20%; vertical-align">
                                                     <?php echo $val->judul_penelitian; ?>
                                                 <td style="width: 20%; vertical-align">
