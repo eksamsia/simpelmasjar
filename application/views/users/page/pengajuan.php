@@ -1,5 +1,6 @@
 <?php $this->load->view('users/layout/new-header');?>
 <?php $this->load->view('users/layout/new-navbar');?>
+
 <!-- ============================================================== -->
 <!-- Start right Content here -->
 <!-- ============================================================== -->
@@ -38,9 +39,14 @@
                             </div>
                         </div><!-- end card header -->
                         <!-- pagination and search -->
-                        <div id="table_id_wrapper" class="dataTables_wrapper">
+                        <div class="navbar-form navbar-right">
+                            <?php echo form_open('PengajuanCon/search')?>
+                            <input type="text" name="keyword" class="form-control"
+                            placeholder="Search Invoice Kode">
+                            <button type="submit" class="btn btn-success">Cari</button>
+                            <?php echo form_close()?>
 
-                            <div id="table_id_filter" class="dataTables_filter"
+                            <!-- <div id="table_id_filter" class="dataTables_filter"
                                 style="margin-right: 20px; padding-top: 10px;">
                                 <label style="margin-right: 840px;">Show <select name="table_id_length"
                                         aria-controls="table_id" class="">
@@ -48,11 +54,11 @@
                                         <option value="25">25</option>
                                         <option value="50">50</option>
                                         <option value="100">100</option>
-                                    </select> entries</label>
+                                    </select> entries</label> -->
 
-                                <label>Search:<input type="search" class="" placeholder=""
-                                        aria-controls="table_id"></label>
-                            </div>
+                                <!-- <label>Search:<input type="search" class="" placeholder=""
+                                        aria-controls="table_id"></label> -->
+                            <!-- </div> -->
                         </div>
                         <div class="card-body">
                             <div class="live-preview">
