@@ -38,32 +38,11 @@
                                         class="ri-add-fill me-1 align-bottom"></i> Tambah</button>
                             </div>
                         </div><!-- end card header -->
-                        <!-- pagination and search -->
-                        <div class="navbar-form navbar-right">
-                            <?php echo form_open('PengajuanCon/search')?>
-                            <input type="text" name="keyword" class="form-control"
-                            placeholder="Search Invoice Kode">
-                            <button type="submit" class="btn btn-success">Cari</button>
-                            <?php echo form_close()?>
 
-                            <!-- <div id="table_id_filter" class="dataTables_filter"
-                                style="margin-right: 20px; padding-top: 10px;">
-                                <label style="margin-right: 840px;">Show <select name="table_id_length"
-                                        aria-controls="table_id" class="">
-                                        <option value="10">10</option>
-                                        <option value="25">25</option>
-                                        <option value="50">50</option>
-                                        <option value="100">100</option>
-                                    </select> entries</label> -->
-
-                                <!-- <label>Search:<input type="search" class="" placeholder=""
-                                        aria-controls="table_id"></label> -->
-                            <!-- </div> -->
-                        </div>
                         <div class="card-body">
                             <div class="live-preview">
                                 <div class="table-responsive">
-                                    <table class="table table-striped table-nowrap align-middle mb-0">
+                                    <table id="datatable1" class="table table-striped table-nowrap align-middle mb-0">
                                         <thead>
                                             <tr>
                                                 <th scope="col">No</th>
