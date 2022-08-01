@@ -63,6 +63,25 @@
 
     <!-- datatables-->
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+    <style>
+    .page-item.active .page-link {
+        color: #fff !important;
+        background-color: #000 !important;
+        border-color: #000 !important;
+    }
+
+    .page-link {
+        color: #000 !important;
+        background-color: #fff !important;
+        border: 1px solid #dee2e6 !important;
+    }
+
+    .page-link:hover {
+        color: #fff !important;
+        background-color: #000 !important;
+        border-color: #000 !important;
+    }
+    </style>
 
 </head>
 
