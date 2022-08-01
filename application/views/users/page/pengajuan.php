@@ -130,7 +130,7 @@ echo '<button type="button" class="btn btn-success btn-animation waves-effect wa
                 </div>
                 <div class="modal-body">
                     <div style="margin-top: 0px; padding-bottom: 10px;  ">
-                        <a href="contoh.jpeg" id="link_download" target="_blank"
+                        <a href="<?php echo base_url();?>/assets/contoh.jpeg" id="link_download" target="_blank"
                             class="btn btn-warning btn-label waves-effect waves-light"><i
                                 class="lar la-file-image label-icon align-middle fs-16 me-2"></i> Contoh Pengisian Form
                         </a>
