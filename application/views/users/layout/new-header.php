@@ -61,9 +61,7 @@
     <!-- dropzone css -->
     <link rel="stylesheet" href="<?=base_url()?>ruangrapat-assets/assets/libs/dropzone/dropzone.css" type="text/css" />
 
-    <!-- datatables-->
-    <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
-    <style>
+    <!-- <style>
     .page-item.active .page-link {
         color: #fff !important;
         background-color: #000 !important;
@@ -81,7 +79,7 @@
         background-color: #000 !important;
         border-color: #000 !important;
     }
-    </style>
+    </style> -->
 
 </head>
 

@@ -87,8 +87,6 @@
 <!-- App js -->
 <script src="<?=base_url()?>ruangrapat-assets/assets/js/app.js"></script>
 
-<!-- js datatables -->
-<script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 <script>
 $(document).ready(function() {
     $('#datatable1').DataTable();
