@@ -28,8 +28,8 @@ class AdminController extends DefaultController
 
     public function index()
     {
-        $data['data_pengajuan'] = $this->getData();
-        $this->load->view('users/page/pengajuan', $data);
+        $data['list_rr'] = $this->getData();
+        $this->load->view('users/page/home', $data);
     }
 
     private function getData()
@@ -37,7 +37,7 @@ class AdminController extends DefaultController
         $this->load->database();
         $this->db->select('*');
         $this->db->order_by("id", "asc");
-        return $this->db->get('pengajuan')->result();
+        return $this->db->get('master_ruang')->result();
     }
 
 }
