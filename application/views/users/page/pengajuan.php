@@ -52,7 +52,7 @@
                                                 <th scope="col">No. Surat</th>
                                                 <th scope="col">Judul Penelitian</th>
                                                 <th scope="col">Keterangan</th>
-                                                <th scope="col">Dokumen</th>
+                                                <!-- <th scope="col">Dokumen</th> -->
                                                 <th scope="col">Aksi</th>
                                                 <th scope="col">Preview</th>
                                             </tr>
@@ -88,9 +88,9 @@ foreach ($data_pengajuan as $val) {
                                                 <td style="width: 20%; vertical-align">
                                                     <?php echo help_approve($val->isApproved); ?>
                                                 </td>
-                                                <td style="width: 20%; vertical-align">
+                                                <!-- <td style="width: 20%; vertical-align">
                                                     <?php echo '<button type="button" class="btn btn-warning btn-animation waves-effect waves-light" title="Foto" onclick="detail_foto(' . "'" . $val->id . "'" . ')"><i class="las la-photo-video"></i></button> &nbsp;' ?>
-                                                </td>
+                                                </td> -->
                                                 <td style="width: 10%; vertical-align">
                                                     <?php echo '<button type="button" class="btn btn-info btn-animation waves-effect waves-light" title="Edit" onclick="update(' . "'" . $val->id . "'" . ')"><i class="las la-pen-fancy"></i></button> &nbsp;' . '<button type="button" class="btn btn-danger btn-animation waves-effect waves-light" title="Hapus" onclick="hapus(' . "'" . $val->id . "'" . ')"><i class="las la-trash"></i></button> &nbsp;' . $tombol; ?>
                                                 </td>
@@ -130,7 +130,7 @@ echo '<button type="button" class="btn btn-success btn-animation waves-effect wa
                 </div>
                 <div class="modal-body">
                     <div style="margin-top: 0px; padding-bottom: 10px;  ">
-                        <a href="<?php echo base_url(); ?>/assets/contoh.jpeg" id="link_download" target="_blank"
+                        <a href="<?php echo base_url(); ?>/assets/contoh.jpeg" target="_blank"
                             class="btn btn-warning btn-label waves-effect waves-light"><i
                                 class="lar la-file-image label-icon align-middle fs-16 me-2"></i> Contoh Pengisian Form
                         </a>
@@ -157,7 +157,7 @@ foreach ($data_kategori as $val) {?>
                                 <div class="mb-3">
                                     <label for="teammembersName" class="form-label">Judul Penelitian</label>
                                     <input type="text" class="form-control" id="judul_penelitian"
-                                        name="judul_penelitian" placeholder="Judul Penelitian">
+                                        name="judul_penelitian" placeholder="contoh: Asuhan kebidanan bayi baru lahir">
                                 </div>
                             </div>
 
@@ -169,7 +169,7 @@ foreach ($data_kategori as $val) {?>
                                             <label class="form-label">Surat Dari</label>
                                             <div class="input-group">
                                                 <input type="text" class="form-control" id="nama_pejabat"
-                                                    name="nama_pejabat" placeholder="ex. Dekan Stikes Satria Bhakti
+                                                    name="nama_pejabat" placeholder="contoh: Dekan Stikes Satria Bhakti
                                                 Nganjuk">
                                             </div>
                                         </div>
@@ -180,7 +180,7 @@ foreach ($data_kategori as $val) {?>
                                             <div class="input-group">
 
                                                 <input type="text" class="form-control" id="no_surat" name="no_surat"
-                                                    placeholder="Nomor Surat">
+                                                    placeholder="contoh: IIII/STIKes.SB/DIII.Keb/TU/I/2022">
                                             </div>
                                         </div>
                                     </div>
@@ -196,7 +196,7 @@ foreach ($data_kategori as $val) {?>
                                             <div class="input-group">
 
                                                 <input type="text" class="form-control" id="status_pemohon"
-                                                    name="status_pemohon" placeholder="Status Pemohon">
+                                                    name="status_pemohon" placeholder="contoh: Mahasiswi">
                                             </div>
                                         </div>
                                     </div>
@@ -206,7 +206,7 @@ foreach ($data_kategori as $val) {?>
                                             <div class="input-group">
 
                                                 <input type="text" class="form-control" id="no_wa" name="no_wa"
-                                                    placeholder="No. Whatsapp">
+                                                    placeholder="contoh: 08XXXXXXXXXX">
                                             </div>
                                         </div>
                                     </div>
@@ -215,9 +215,9 @@ foreach ($data_kategori as $val) {?>
 
                             <div class="col-lg-12">
                                 <div class="mb-3">
-                                    <label for="teammembersName" class="form-label">Lokasi Kegiatan</label>
+                                    <label for="teammembersName" class="form-label">Lokasi Kegiatan Penelitian</label>
                                     <input type="text" class="form-control" id="lokasi" name="lokasi"
-                                        placeholder="Lokasi Kegiatan">
+                                        placeholder="Contoh: PMB Cicik Yuni SST.KEB Ds.Pesadukuh, Kec.Bagor, Kab.Nganjuk">
                                 </div>
                             </div>
 
@@ -225,7 +225,7 @@ foreach ($data_kategori as $val) {?>
                                 <div class="mb-3">
                                     <label for="teammembersName" class="form-label">Alamat Lembaga Pemohon</label>
                                     <input type="text" class="form-control" id="alamat" name="alamat"
-                                        placeholder="Alamat Pemohon">
+                                        placeholder="Contoh: Jl.Panglima Sudirman VI - Jl.Brantas No.3B Nganjuk 64412 Telp/Fax (0358)326110">
                                 </div>
                             </div>
 
@@ -241,17 +241,17 @@ foreach ($data_kategori as $val) {?>
                                             <div class="input-group">
 
                                                 <input type="text" class="form-control" id="lama_kegiatan"
-                                                    name="lama_kegiatan" placeholder="Lama Kegiatan">
+                                                    name="lama_kegiatan" placeholder="contoh: 33 hari">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="mb-3">
-                                            <label class="form-label">Jumlah Anggota</label>
+                                            <label class="form-label">Jumlah Anggota Penelitian</label>
                                             <div class="input-group">
 
                                                 <input type="text" class="form-control" id="jumlah_anggota"
-                                                    name="jumlah_anggota" placeholder="Jumlah Anggota">
+                                                    name="jumlah_anggota" placeholder="contoh: 1 orang">
                                             </div>
                                         </div>
                                     </div>
@@ -289,23 +289,23 @@ foreach ($data_kategori as $val) {?>
                                 <div class="mb-3">
                                     <label for="teammembersName" class="form-label">Perihal Surat</label>
                                     <input type="text" class="form-control" id="perihal" name="perihal"
-                                        placeholder="Perihal Surat">
+                                        placeholder="Permohonan Bantuan Pengumpulan Data Awal Penyusunan Proposal">
                                 </div>
                             </div>
 
-                            <div class="col-lg-12">
+                            <!-- <div class="col-lg-12">
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Upload Surat Pengantar</label>
 
                                     <input class="form-control" type="file" id="file" name="file">
-                                    <!-- <div style="margin-top: 1rem;">
+                                    <div style="margin-top: 1rem;">
                                         <a href="" id="link_download" target="_blank"
                                             class="btn btn-warning btn-label waves-effect waves-light"><i
                                                 class=" ri-download-cloud-2-fill label-icon align-middle fs-16 me-2"></i>
                                         </a>
-                                    </div> -->
+                                    </div>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class="col-lg-12" id="progress" style="display:none">
                                 <div class="progress animated-progress">
@@ -562,7 +562,7 @@ if ($this->session->userdata('role') == 1) {
         var jumlah_anggota = $("#addmembers").find("input[name='jumlah_anggota']").val();
         var kategori = $("#addmembers").find("select[name='id_kategori']").val();
         var perihal = $("#addmembers").find("input[name='perihal']").val();
-        var file_gambar = $("#addmembers").find("input[name='file']")[0].files[0];
+        // var file_gambar = $("#addmembers").find("input[name='file']")[0].files[0];
         var url = '';
 
 
@@ -584,7 +584,7 @@ if ($this->session->userdata('role') == 1) {
             form_data.append('judul_penelitian', judul_penelitian);
             form_data.append('mulai_penelitian', mulai_penelitian);
             form_data.append('selesai_penelitian', selesai_penelitian);
-            form_data.append('file_gambar', file_gambar);
+            // form_data.append('file_gambar', file_gambar);
             form_data.append('id_kategori', kategori);
             form_data.append('nama_pejabat', nama_pejabat);
             form_data.append('no_surat', no_surat);
@@ -611,7 +611,7 @@ if ($this->session->userdata('role') == 1) {
                         $("#addmembers").find("input[name='mulai_penelitian']").val('');
                         $("#addmembers").find("input[name='selesai_penelitian']").val('');
                         $("#addmembers").find("select[name='kategori']").val('');
-                        $("#addmembers").find("input[name='file_gambar']").val('');
+                        // $("#addmembers").find("input[name='file_gambar']").val('');
                         $("#addmembers").find("input[name='nama_pejabat']").val('');
                         $("#addmembers").find("input[name='no_surat']").val('');
                         $("#addmembers").find("input[name='status_pemohon']").val('');

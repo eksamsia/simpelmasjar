@@ -100,7 +100,7 @@ class PengajuanCon extends DefaultController
                 'invoiceid' => $invoice_id,
                 'lama_kegiatan' => $this->input->post("lama_kegiatan"),
                 'jumlah_anggota' => $this->input->post("jumlah_anggota"),
-                'upload_file' => $imgpath,
+                // 'upload_file' => $imgpath,
             );
 
             $doupload = $this->db->insert('pengajuan', $data);
@@ -113,61 +113,63 @@ class PengajuanCon extends DefaultController
                 $status = "error";
                 $msg = "Something went wrong when saving the file, please try again.";
             }
-        } else {
-            $config['upload_path'] = './upload_file/gambar_file/';
-            $config['allowed_types'] = 'gif|jpg|png|jpeg';
-            $config['max_size'] = 1024 * 8;
-            $config['encrypt_name'] = false;
+        } 
+        
+        // else {
+        //     $config['upload_path'] = './upload_file/gambar_file/';
+        //     $config['allowed_types'] = 'gif|jpg|png|jpeg';
+        //     $config['max_size'] = 1024 * 8;
+        //     $config['encrypt_name'] = false;
 
-            $this->upload->initialize($config);
-            $this->load->library('upload', $config);
+        //     $this->upload->initialize($config);
+        //     $this->load->library('upload', $config);
 
-            if (!$this->upload->do_upload($file_element_name)) {
-                $status = 'error';
-                $msg = $this->upload->display_errors('', '');
-            } else {
-                $data = $this->upload->data();
-                $c = base_url();
-                $a = 'upload_file/gambar_file/';
-                $b = $data['file_name'];
-                $imgpath = $a . $b;
+        //     if (!$this->upload->do_upload($file_element_name)) {
+        //         $status = 'error';
+        //         $msg = $this->upload->display_errors('', '');
+        //     } else {
+        //         $data = $this->upload->data();
+        //         $c = base_url();
+        //         $a = 'upload_file/gambar_file/';
+        //         $b = $data['file_name'];
+        //         $imgpath = $a . $b;
 
-                if($this->check_invoice($invoice_id)>0){
-                    $invoice_id=substr(sha1(time()), 0, 8);
-                } 
+        //         if($this->check_invoice($invoice_id)>0){
+        //             $invoice_id=substr(sha1(time()), 0, 8);
+        //         } 
 
-                $data = array(
-                    'id_user' => $this->session->userdata("userid"),
-                    'judul_penelitian' => $this->input->post("judul_penelitian"),
-                    'mulai_penelitian' => $this->input->post("mulai_penelitian"),
-                    'selesai_penelitian' => $this->input->post("selesai_penelitian"),
-                    'perihal' => $this->input->post("perihal"),
-                    'id_kategori' => $this->input->post("id_kategori"),
-                    'nama_pejabat' => $this->input->post("nama_pejabat"),
-                    'no_surat' => $this->input->post("no_surat"),
-                    'status_pemohon' => $this->input->post("status_pemohon"),
-                    'no_wa' => $this->input->post("no_wa"),
-                    'lokasi' => $this->input->post("lokasi"),
-                    'alamat' => $this->input->post("alamat"),
-                    'invoiceid' => $invoice_id,
-                    'lama_kegiatan' => $this->input->post("lama_kegiatan"),
-                    'jumlah_anggota' => $this->input->post("jumlah_anggota"),
-                    'upload_file' => $imgpath,
-                );
+        //         $data = array(
+        //             'id_user' => $this->session->userdata("userid"),
+        //             'judul_penelitian' => $this->input->post("judul_penelitian"),
+        //             'mulai_penelitian' => $this->input->post("mulai_penelitian"),
+        //             'selesai_penelitian' => $this->input->post("selesai_penelitian"),
+        //             'perihal' => $this->input->post("perihal"),
+        //             'id_kategori' => $this->input->post("id_kategori"),
+        //             'nama_pejabat' => $this->input->post("nama_pejabat"),
+        //             'no_surat' => $this->input->post("no_surat"),
+        //             'status_pemohon' => $this->input->post("status_pemohon"),
+        //             'no_wa' => $this->input->post("no_wa"),
+        //             'lokasi' => $this->input->post("lokasi"),
+        //             'alamat' => $this->input->post("alamat"),
+        //             'invoiceid' => $invoice_id,
+        //             'lama_kegiatan' => $this->input->post("lama_kegiatan"),
+        //             'jumlah_anggota' => $this->input->post("jumlah_anggota"),
+        //             'upload_file' => $imgpath,
+        //         );
 
-                $doupload = $this->db->insert('pengajuan', $data);
+        //         $doupload = $this->db->insert('pengajuan', $data);
 
-                if ($doupload) {
-                    $status = "success";
-                    $msg = "File successfully uploaded";
-                } else {
-                    unlink($data['full_path']);
-                    $status = "error";
-                    $msg = "Something went wrong when saving the file, please try again.";
-                }
-            }
-            @unlink($_FILES[$file_element_name]);
-        }
+        //         if ($doupload) {
+        //             $status = "success";
+        //             $msg = "File successfully uploaded";
+        //         } else {
+        //             unlink($data['full_path']);
+        //             $status = "error";
+        //             $msg = "Something went wrong when saving the file, please try again.";
+        //         }
+        //     }
+        //     @unlink($_FILES[$file_element_name]);
+        // }
         echo json_encode(array('status' => $status, 'msg' => $msg));
     }
 
