@@ -32,28 +32,29 @@
   			</div>
   			<ul class="navbar-nav" id="navbar-nav">
   				<li class="menu-title"><span data-key="t-menu">Menu</span></li>
-  				<li class="nav-item">
+  				<!-- <li class="nav-item">
   					<a class="nav-link menu-link" href="<?= base_url();?>admin">
   						<i class="lab la-laravel"></i> <span data-key="t-landing">Reservasi</span>
   					</a>
-  				</li>
+  				</li> -->
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="<?= base_url();?>admin/pengajuan">
                         <i class="lab la-accusoft"></i> <span data-key="t-landing">Pengajuan Proposal</span>
                     </a>
                 </li>
-				<li class="nav-item">
+				<!-- <li class="nav-item">
                     <a class="nav-link menu-link" href="<?= base_url();?>admin/list-rapat">
                         <i class="lab la-accusoft"></i> <span data-key="t-landing">List Rapat</span>
                     </a>
-                </li>
-                <?php if ($this->session->userdata('role')==1) { ?>
+                </li> -->
+                <!-- 
+					<?php if ($this->session->userdata('role')==1) { ?>
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="<?= base_url();?>admin/master-rr">
                             <i class="las la-house-damage"></i> <span data-key="t-landing">Ruang Rapat</span>
                         </a>
                     </li>
-                <?php }?>
+                <?php }?> -->
             </ul>
         </div>
         <!-- Sidebar -->
